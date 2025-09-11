@@ -54,7 +54,7 @@ export default function StudioOverlay({ onClose }: { onClose: () => void }) {
           </p>
 
           {/* GRID */}
-          <div className=" gap-6 text-sm px-2">
+          <div className=" gap-6 text-sm px-0">
             {/* SERVICES */}
             <div>
               <h2 className="font-semibold mb-0">SERVICES</h2>
