@@ -29,7 +29,7 @@ export default function VimeoBackground({ id, poster }: Props) {
     return () => {
       clearTimeout(grace);
       clearTimeout(fallback);
-      player.unload().catch(() => {});
+      player.destroy();
     };
   }, []);
 
