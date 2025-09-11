@@ -11,7 +11,7 @@ export default function Home() {
         </h1>
 
         <section className="relative h-screen">
-        <VimeoBackground id="1117685610" />
+        <VimeoBackground id="1117685610" poster="/img/posters/main.jpg" />
         </section>
 
       </main>
