@@ -47,48 +47,44 @@ export default function StudioOverlay({ onClose }: { onClose: () => void }) {
           <h1 className="text-3xl md:text-4xl mb-6 mt-10">
             Creative Production, Post-Production and Animation Studio.
           </h1>
-          <p className="text-3xl text-rose-400 mb-20">
-            We are a collective of artists and directors who tell engaging
+          <p className="text-3xl text-rose-400 mb-6">
+            We are a team of artists and directors dedicated to telling engaging 
             stories with bold visuals, exploring the unlimited possibilities of
             film, VFX, animation, interactive arts, and AI.
           </p>
 
           {/* GRID */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 text-sm px-2">
+          <div className=" gap-6 text-sm px-2">
             {/* SERVICES */}
             <div>
               <h2 className="font-semibold mb-0">SERVICES</h2>
               <ul className="space-y-0 opacity-80">
-                {[
-                  "Creative Studio",
-                  "Production",
-                  "Service Production",
-                  "Post-Production",
-                  "VFX",
-                  "VFX supervision",
-                  "3d animation",
-                  "2d animation",
-                  "Color grading",
-                  "Editing",
-                  "Filmmakers",
-                  "Art Direction",
-                  "Motion Design",
-                  "Interactive Arts",
-                  "Visualizers",
-                  "Pitch design",
-                  "Virtual Production",
-                  "Music videos",
-                  "Commercials",
-                  "Film",
-                ].map((s) => (
-                  <li key={s}>{s}</li>
-                ))}
+                  Creative Studio,
+                  Production,
+                  Service Production,
+                  Post-Production,
+                  VFX,
+                  VFX supervision,
+                  3d animation,
+                  2d animation,
+                  Color grading,
+                  Editing,
+                  Filmmakers,
+                  Art Direction,
+                  Motion Design,
+                  Interactive Arts,
+                  Visualizers,
+                  Pitch design,
+                  Virtual Production,
+                  Music videos,
+                  Commercials,
+                  Film,
               </ul>
             </div>
 
             {/* CLIENTS */}
             <div>
-              <h2 className="font-semibold mb-0">CLIENTS</h2>
+              <h2 className="font-semibold mt-8">CLIENTS</h2>
               <ul className="opacity-80 space-y-0">
                 {["Mama Dousha", "Pijama Studio", "Rumbo Media"].map((c) => (
                   <li key={c}>{c}</li>
@@ -98,7 +94,7 @@ export default function StudioOverlay({ onClose }: { onClose: () => void }) {
 
             {/* FOLLOW */}
             <div>
-              <h2 className="font-semibold mb-3">FOLLOW</h2>
+              <h2 className="font-semibold  mt-8">FOLLOW</h2>
               <ul className="opacity-80 space-y-0 text-rose-400">
                 {[
                   {
@@ -127,7 +123,7 @@ export default function StudioOverlay({ onClose }: { onClose: () => void }) {
 
             {/* LOCATION */}
             <div>
-              <h2 className="font-semibold mb-0">LOCATION</h2>
+              <h2 className="font-semibold  mt-8">LOCATION</h2>
               <p className="opacity-80">
                 08015 Barcelona
                 <br />
@@ -137,11 +133,10 @@ export default function StudioOverlay({ onClose }: { onClose: () => void }) {
 
             {/* CONTACT */}
             <div>
-              <h2 className="font-semibold mb-0">CONTACT</h2>
+              <h2 className="font-semibold mt-8">CONTACT</h2>
               <p className="opacity-80">
                 For general inquiries, please contact our production team at{" "}
                 hi@natatelevision.com
-                <br />
                 <br />
                 For careers, submit your CV and portfolio / website / showreel
                 to hi@natatelevision.com
