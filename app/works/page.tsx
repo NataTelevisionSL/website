@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { WORKS } from "@/data/works";
 import Nav from "@/components/Nav";
-import VimeoBackground from "@/components/VimeoBackground";
+import VimeoWork from "@/components/VimeoWork";
 
 export const metadata = { title: "Works — Nata Television" };
 
@@ -25,7 +25,7 @@ export default function Works() {
                 <p className="text-sm opacity-70 mt-1 mb-2 md:text-justify">{w.description}</p>
               )}
               <div className="relative aspect-[16/9] mb-4 overflow-hidden">
-               <VimeoBackground id={w.vimeoId} />
+               <VimeoWork id={w.vimeoId} />
               </div>
             </article>
           ))}
