@@ -30,7 +30,7 @@ export default function VimeoBackground({ id }: { id: string }) {
   }, []);
 
   return (
-    <div className="vimeo-cover relative bg-black">
+    <div className="vimeo-work relative bg-black">
       <iframe
         ref={iframeRef}
         src={`https://player.vimeo.com/video/${id}?background=1&autoplay=1&loop=1&muted=1&dnt=1`}
