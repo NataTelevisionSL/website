@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #111111;
+  --fg: #e5e5e5;
+  --accent: #ff3355;
+}
+
+html { background: var(--bg); color: var(--fg); }
+body { font-feature-settings: 'liga' 1, 'kern' 1; }
+a { text-underline-offset: 2px; }
+
+
+/* Fa que l'iframe de Vimeo cobreixi tota la pantalla com un "object-cover" */
+.vimeo-cover {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.vimeo-cover iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* Per defecte: cobrir verticalment (basat en l'alçada) */
+  width: 177.78vh; /* 100vh * (16/9) */
+  height: 100vh;
+  transform: translate(-50%, -50%);
+}
+
+/* Si la finestra és més ampla (>=16:9), canviem l'estratègia per cobrir horitzontalment */
+@media (min-aspect-ratio: 16/9) {
+  .vimeo-cover iframe {
+    width: 100vw;
+    height: 56.25vw; /* 100vw * (9/16) */
+  }
+}
+
