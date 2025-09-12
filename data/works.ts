@@ -15,7 +15,7 @@ export const WORKS: Work[] = [
         `,
     vimeoId: "1117687971",
   },
-  /*
+
   {
     id: 2,
     title: "ESTA ES TU CASA - Kapo $ Camilo",
@@ -35,10 +35,9 @@ export const WORKS: Work[] = [
         Daniel Lores,
         David Lozano.
         `,
-    mediaType: "video",
-    media: "/video/002_camilo.mp4",
+    vimeoId: "1117687982",
   },
-  */
+
   {
     id: 1,
     title: "LA VITAMINA DE L'AMOR - Mama Dousha",
