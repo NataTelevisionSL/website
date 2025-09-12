@@ -20,7 +20,7 @@ export const WORKS: Work[] = [
     id: 2,
     title: "ESTA ES TU CASA - Kapo & Camilo",
     year: 2025,
-    description: `Client: PIJAMA STUDIO. Post-production / VFX of sixty shots for the new music video of Kapo $ Camilo. 
+    description: `Client: PIJAMA STUDIO. Post-production / VFX of sixty shots for the new music video of Kapo & Camilo. 
         VFX team:
         Noé Delaye Suñer,
         Roger Piñol Cancer,
