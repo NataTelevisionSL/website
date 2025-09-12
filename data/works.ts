@@ -18,7 +18,7 @@ export const WORKS: Work[] = [
 
   {
     id: 2,
-    title: "ESTA ES TU CASA - Kapo $ Camilo",
+    title: "ESTA ES TU CASA - Kapo & Camilo",
     year: 2025,
     description: `Client: PIJAMA STUDIO. Post-production / VFX of sixty shots for the new music video of Kapo $ Camilo. 
         VFX team:
@@ -26,7 +26,7 @@ export const WORKS: Work[] = [
         Roger Piñol Cancer,
         Carlos Yau,
         Noa Bofill,
-        Clara Beltrán,
+        Clara Beltran,
         Joaquín Cuervo,
         Joan Cortit,
         Adrià Draper,
