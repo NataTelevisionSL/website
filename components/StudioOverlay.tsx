@@ -50,7 +50,7 @@ export default function StudioOverlay({ onClose }: { onClose: () => void }) {
           <p className="text-3xl text-rose-400 mb-6">
             We are a team of artists and directors dedicated to telling engaging 
             stories with bold visuals, exploring the unlimited possibilities of
-            film, VFX, animation, interactive arts, and AI.
+            film, VFX, animation and AI.
           </p>
 
           {/* GRID */}
@@ -131,19 +131,24 @@ export default function StudioOverlay({ onClose }: { onClose: () => void }) {
               </p>
             </div>
 
-            {/* CONTACT */}
+            {/* CAREERS */}
             <div>
-              <h2 className="font-semibold mt-8">CONTACT</h2>
+              <h2 className="font-semibold mt-8">CAREERS</h2>
               <p className="opacity-80">
-                For general inquiries, please contact our production team at{" "}
-                hi@natatelevision.com
-                <br />
                 For careers, submit your CV and portfolio / website / showreel
                 to hi@natatelevision.com
               </p>
             </div>
-          </div>
 
+            {/* CLIENTS */}
+            <div>
+              <h2 className="font-semibold mt-8">CLIENTS</h2>
+              <p className="opacity-80">
+                For any inquiries or further information you can email us at admin@natatelevision.com, +619 92 63 11 (Noé Delaye), or visit us at Carrer Canalejas 3, Barcelona. We offer a commission for successful project referrals.
+                We look forward to working with you.
+              </p>
+            </div>
+          </div>
         </div>
       </motion.main>
     </>

@@ -7,15 +7,6 @@ export type Work = {
 };
 
 export const WORKS: Work[] = [
-   {
-    id: 3,
-    title: "TOFU DE TORO",
-    year: 2025,
-    description: `Client: NATA TELEVISION. Full Service project.
-        `,
-    vimeoId: "1117687971",
-  },
-
   {
     id: 2,
     title: "ESTA ES TU CASA - Kapo & Camilo",
@@ -48,8 +39,40 @@ export const WORKS: Work[] = [
         VFX Artist:
         Noé Delaye Suñer
         Roger Piñol Cancer,
-        Carlos Yau,
+        Carlos Yau.
         `,
     vimeoId: "1117687956",
   },
+
+  
+  {
+    id: 0,
+    title: "MISSING PIECES - TV Series Pitch",
+    year: 2021,
+    description: `3D Animation. 
+        Direction:
+        Roger Piñol,
+        Artists:
+        Lucía Bordona,
+        Carla Magriñà,
+        Joel Martínez,
+        Bernat Mas,
+        Joan Palacios,
+        Roger Piñol,
+        Ilona Escudero,
+        Montserrat Larque,
+        Kirsty Harris,
+        Irene Fernández,
+        Olaf Aguera,
+        Pau Losada,
+        Cristian Casas,
+        Joan Pons,
+        Marina Salas,
+        Andrea Gutiérrez,
+        Silvia Ros,
+        Sergi Solanes.
+        `,
+    vimeoId: "1169915996",
+  },
+
 ];
