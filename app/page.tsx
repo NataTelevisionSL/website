@@ -15,7 +15,7 @@ export default function Home() {
           {t.tagline}
         </h1>
         {/* Lang switcher: sota logo en mobil, centrat en desktop */}
-        <div className="fixed top-16 left-6 md:top-14 md:left-1/2 md:-translate-x-1/2 z-[50] flex items-center gap-2 text-[9px] md:text-xs uppercase tracking-widest">
+        <div className="fixed top-16 left-6 w-[140px] md:w-auto md:top-14 md:left-1/2 md:-translate-x-1/2 z-[50] flex justify-center items-center gap-2 text-xs md:text-xs uppercase tracking-widest">
           {(["en", "es", "ca"] as const).map((l, i) => (
             <>
               {i > 0 && <span key={`sep-${l}`} className="text-neutral-600">/</span>}
