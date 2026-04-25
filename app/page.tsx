@@ -14,17 +14,20 @@ export default function Home() {
         <h1 className="fixed top-8 left-1/2 -translate-x-1/2 z-[50] hidden md:block text-[10px] sm:text-xs md:text-sm lg:text-base lg:text-lg text-white text-center">
           {t.tagline}
         </h1>
-        <div className="fixed top-14 left-1/2 -translate-x-1/2 z-[50] hidden md:flex gap-3 text-[10px] uppercase tracking-widest">
-          {(["en", "es", "ca"] as const).map((l) => (
-            <button
-              key={l}
-              onClick={() => setLang(l)}
-              className={`transition ${
-                lang === l ? "text-rose-500" : "text-neutral-500 hover:text-neutral-300"
-              }`}
-            >
-              {l}
-            </button>
+        <div className="fixed top-14 left-1/2 -translate-x-1/2 z-[50] hidden md:flex items-center gap-2 text-xs uppercase tracking-widest">
+          {(["en", "es", "ca"] as const).map((l, i) => (
+            <>
+              {i > 0 && <span key={`sep-${l}`} className="text-neutral-600">/</span>}
+              <button
+                key={l}
+                onClick={() => setLang(l)}
+                className={`transition ${
+                  lang === l ? "text-rose-500" : "text-neutral-500 hover:text-neutral-300"
+                }`}
+              >
+                {l.toUpperCase()}
+              </button>
+            </>
           ))}
         </div>
 
