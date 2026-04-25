@@ -6,7 +6,7 @@ import { useState } from "react";
 import StudioOverlay from "@/components/StudioOverlay";
 
 const tabs = [
-  { href: "/works", label: "WORKS" },
+  { href: "/#works", label: "WORKS" },
   { href: "studio-overlay", label: "STUDIO" }, // marquem Studio diferent
 ];
 

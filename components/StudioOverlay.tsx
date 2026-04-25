@@ -125,6 +125,7 @@ export default function StudioOverlay({ onClose }: { onClose: () => void }) {
             <div>
               <h2 className="font-semibold  mt-8">LOCATION</h2>
               <p className="opacity-80">
+                Carrer Canalejas 3,
                 08015 Barcelona
                 <br />
                 Spain
