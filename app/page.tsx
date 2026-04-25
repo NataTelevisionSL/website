@@ -36,7 +36,7 @@ export default function Home() {
         </section>
 
         {/* STUDIO */}
-        <section id="studio" className="mx-auto px-6 py-10 text-white">
+        <section id="studio" className="mx-auto px-6 pt-4 pb-20 text-white">
           <h1 className="text-4xl md:text-6xl mb-6 mt-10">
             Creative Production, Post-Production and Animation Studio.
           </h1>

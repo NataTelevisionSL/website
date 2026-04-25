@@ -48,16 +48,26 @@ a { text-underline-offset: 2px; }
 .vimeo-work iframe {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* mostra tot el vídeo, encara que hi hagi bandes */
+  object-fit: contain;
 }
 
-
-/* Si la finestra és més ampla (>=16:9), canviem l'estratègia per cobrir horitzontalment */
 @media (min-aspect-ratio: 16/9) {
   .vimeo-work iframe {
     width: 100vw;
-    height: 56.25vw; /* 100vw * (9/16) */
+    height: 56.25vw;
   }
+}
+
+/* Iframe encastat per a la seccio de works */
+.vimeo-embed {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.vimeo-embed iframe {
+  width: 100%;
+  height: 100%;
 }
 
 
