@@ -17,7 +17,7 @@ export default function Home() {
         </section>
 
         {/* WORKS */}
-        <section id="works" className="mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-1 gap-9">
+        <section id="works" className="mx-auto max-w-3xl px-6 py-20 grid grid-cols-1 md:grid-cols-1 gap-9">
           {WORKS.map((w) => (
             <article key={w.id}>
               <div className="flex justify-between text-sm opacity-80 font-bold">
@@ -36,11 +36,11 @@ export default function Home() {
         </section>
 
         {/* STUDIO */}
-        <section id="studio" className="mx-auto px-6 py-20 text-white">
-          <h1 className="text-3xl md:text-4xl mb-6 mt-10">
+        <section id="studio" className="mx-auto px-6 py-10 text-white">
+          <h1 className="text-4xl md:text-6xl mb-6 mt-10">
             Creative Production, Post-Production and Animation Studio.
           </h1>
-          <p className="text-3xl text-rose-400 mb-6">
+          <p className="text-4xl md:text-5xl text-rose-400 mb-6">
             We are a team of artists and directors dedicated to telling engaging
             stories with bold visuals, exploring the unlimited possibilities of
             film, VFX, animation and AI.
@@ -59,7 +59,7 @@ export default function Home() {
             <div>
               <h2 className="font-semibold mt-8">CLIENTS</h2>
               <ul className="opacity-80 space-y-0">
-                {["Mama Dousha", "Pijama Studio", "Rumbo Media"].map((c) => (
+                {["Mama Dousha", "Pijama Studio", "Rumbo Media", "Universal Pixel Studio", "Trez®"].map((c) => (
                   <li key={c}>{c}</li>
                 ))}
               </ul>
@@ -101,9 +101,9 @@ export default function Home() {
         </section>
       </main>
 
-      <div className="fixed bottom-5 right-6 z-[50] text-xs md:text-sm uppercase tracking-wide opacity-80 text-rose-600 font-bold">
+      <a href="/" className="fixed bottom-5 right-6 z-[50] text-xs md:text-sm uppercase tracking-wide opacity-80 text-rose-600 font-bold hover:opacity-100 transition">
         NATA TELEVISION ©
-      </div>
+      </a>
 
       <Nav />
     </>
