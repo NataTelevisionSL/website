@@ -6,7 +6,7 @@ import Nav from "@/components/Nav";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://natatelevision.com";
 const titleDefault = "Nata Television";
 const description =
-  "Creative Production, Post and Animation Studio";
+  "Nata Television is a Barcelona-based creative studio specialising in film production, VFX, 3D animation, post-production, color grading, motion design and virtual production.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

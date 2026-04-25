@@ -26,7 +26,7 @@ export default function Home() {
                 <span>{w.year}</span>
               </div>
               {w.description && (
-                <p className="text-sm opacity-70 mt-1 mb-2 md:text-justify">{w.description}</p>
+                <p className="text-sm opacity-40 mt-1 mb-2 md:text-justify">{w.description}</p>
               )}
               <div className="relative aspect-[16/9] mb-4 overflow-hidden">
                 <VimeoWork id={w.vimeoId} />
@@ -34,10 +34,75 @@ export default function Home() {
             </article>
           ))}
         </section>
+
+        {/* STUDIO */}
+        <section id="studio" className="mx-auto px-6 py-20 text-white">
+          <h1 className="text-3xl md:text-4xl mb-6 mt-10">
+            Creative Production, Post-Production and Animation Studio.
+          </h1>
+          <p className="text-3xl text-rose-400 mb-6">
+            We are a team of artists and directors dedicated to telling engaging
+            stories with bold visuals, exploring the unlimited possibilities of
+            film, VFX, animation and AI.
+          </p>
+          <div className="gap-6 text-sm px-0">
+            <div>
+              <h2 className="font-semibold mb-0">SERVICES</h2>
+              <ul className="space-y-0 opacity-80">
+                Creative Studio, Production, Service Production, Post-Production,
+                VFX, VFX supervision, 3d animation, 2d animation, Color grading,
+                Editing, Filmmakers, Art Direction, Motion Design, Interactive Arts,
+                Visualizers, Pitch design, Virtual Production, Music videos,
+                Commercials, Film.
+              </ul>
+            </div>
+            <div>
+              <h2 className="font-semibold mt-8">CLIENTS</h2>
+              <ul className="opacity-80 space-y-0">
+                {["Mama Dousha", "Pijama Studio", "Rumbo Media"].map((c) => (
+                  <li key={c}>{c}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h2 className="font-semibold mt-8">FOLLOW</h2>
+              <ul className="opacity-80 space-y-0 text-rose-400">
+                {[
+                  { name: "Instagram", href: "https://www.instagram.com/natatelevision/" },
+                  { name: "LinkedIn", href: "https://www.linkedin.com/company/nata-television/" },
+                ].map((s) => (
+                  <li key={s.name}>
+                    <a href={s.href} target="_blank" rel="noopener noreferrer" className="hover:underline underline-offset-4">
+                      {s.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h2 className="font-semibold mt-8">LOCATION</h2>
+              <p className="opacity-80">Carrer Canalejas 3, 08015 Barcelona, Spain</p>
+            </div>
+            <div>
+              <h2 className="font-semibold mt-8">CAREERS</h2>
+              <p className="opacity-80">
+                For careers, submit your CV and portfolio / website / showreel to hi@natatelevision.com
+              </p>
+            </div>
+            <div>
+              <h2 className="font-semibold mt-8">CONTACT</h2>
+              <p className="opacity-80">
+                For any inquiries or further information you can email us at admin@natatelevision.com,
+                +619 92 63 11 (Noé Delaye), or visit us at Carrer Canalejas 3, Barcelona.
+                We offer a commission for successful project referrals.
+              </p>
+            </div>
+          </div>
+        </section>
       </main>
 
       <div className="fixed bottom-5 right-6 z-[50] text-xs md:text-sm uppercase tracking-wide opacity-80 text-rose-600 font-bold">
-        NATA TELEVISION © 2025
+        NATA TELEVISION ©
       </div>
 
       <Nav />

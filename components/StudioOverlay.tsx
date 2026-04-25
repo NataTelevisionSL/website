@@ -78,7 +78,7 @@ export default function StudioOverlay({ onClose }: { onClose: () => void }) {
                   Virtual Production,
                   Music videos,
                   Commercials,
-                  Film,
+                  Film
               </ul>
             </div>
 
@@ -86,7 +86,7 @@ export default function StudioOverlay({ onClose }: { onClose: () => void }) {
             <div>
               <h2 className="font-semibold mt-8">CLIENTS</h2>
               <ul className="opacity-80 space-y-0">
-                {["Mama Dousha", "Pijama Studio", "Rumbo Media"].map((c) => (
+                {["Mama Dousha", "Pijama Studio", "Rumbo Media", "Rumbo Media", "Universe Pixel Studio", "Trex®"].map((c) => (
                   <li key={c}>{c}</li>
                 ))}
               </ul>
