@@ -2,7 +2,7 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 import { Lang, translations } from "@/data/translations";
 
-type T = typeof translations["en"];
+type T = (typeof translations)[Lang];
 
 type LanguageContextType = {
   lang: Lang;

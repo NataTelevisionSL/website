@@ -7,6 +7,7 @@ Next.js (App Router) + Tailwind + Framer Motion.
 
 ## Instal·lació
 ```bash
+cd /d "m:\004_nata\0040_website\website"
 npm install
 npm run dev
 ```
