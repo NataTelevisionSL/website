@@ -37,13 +37,11 @@ export default function Home() {
 
         {/* STUDIO */}
         <section id="studio" className="mx-auto px-6 pt-4 pb-20 text-white">
-          <h1 className="text-4xl md:text-6xl mb-6 mt-10">
+          <h1 className="text-4xl md:text-5xl mb-6 mt-5">
             Creative Production, Post-Production and Animation Studio.
           </h1>
-          <p className="text-4xl md:text-5xl text-rose-400 mb-6">
-            We are a team of artists and directors dedicated to telling engaging
-            stories with bold visuals, exploring the unlimited possibilities of
-            film, VFX, animation and AI.
+          <p className="text-4xl text-rose-400 mb-6">
+            We believe great work starts with listening. Whatever your vision or budget, we work alongside you to find the right creative solution — one that fits your needs and tells your story with care. People are at the heart of everything we make.
           </p>
           <div className="gap-6 text-sm px-0">
             <div>
