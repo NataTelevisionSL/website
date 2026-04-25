@@ -1,16 +1,32 @@
-import Nav from "@/components/Nav";
+"use client";
 import VimeoBackground from "@/components/VimeoBackground";
 import VimeoWork from "@/components/VimeoWork";
 import { WORKS } from "@/data/works";
+import { useLang } from "@/contexts/LanguageContext";
 
 export default function Home() {
+  const { t, lang, setLang } = useLang();
+
   return (
     <>
       <main>
         {/* HERO */}
-        <h1 className="fixed top-8 left-1/2 -translate-x-1/2 z-[50] hidden md:block text-[10px] sm:text-xs md:text-sm lg:text-base lg:text-lg text-white">
-          Creative Production, Post-Production and Animation Studio.
+        <h1 className="fixed top-8 left-1/2 -translate-x-1/2 z-[50] hidden md:block text-[10px] sm:text-xs md:text-sm lg:text-base lg:text-lg text-white text-center">
+          {t.tagline}
         </h1>
+        <div className="fixed top-14 left-1/2 -translate-x-1/2 z-[50] hidden md:flex gap-3 text-[10px] uppercase tracking-widest">
+          {(["en", "es", "ca"] as const).map((l) => (
+            <button
+              key={l}
+              onClick={() => setLang(l)}
+              className={`transition ${
+                lang === l ? "text-rose-500" : "text-neutral-500 hover:text-neutral-300"
+              }`}
+            >
+              {l}
+            </button>
+          ))}
+        </div>
 
         <section className="relative h-screen">
           <VimeoBackground id="1117688278" poster="/img/posters/main.jpg" />
@@ -38,24 +54,20 @@ export default function Home() {
         {/* STUDIO */}
         <section id="studio" className="mx-auto px-6 pt-4 pb-20 text-white">
           <h1 className="text-4xl md:text-5xl mb-6 mt-5">
-            Creative Production, Post-Production and Animation Studio.
+            {t.studio.h1}
           </h1>
           <p className="text-4xl text-rose-400 mb-6">
-            We believe great work starts with listening. Whatever your vision or budget, we work alongside you to find the right creative solution — one that fits your needs and tells your story with care. People are at the heart of everything we make.
+            {t.studio.description}
           </p>
           <div className="gap-6 text-sm px-0">
             <div>
-              <h2 className="font-semibold mb-0">SERVICES</h2>
+              <h2 className="font-semibold mb-0">{t.studio.services}</h2>
               <ul className="space-y-0 opacity-80">
-                Creative Studio, Production, Service Production, Post-Production,
-                VFX, VFX supervision, 3d animation, 2d animation, Color grading,
-                Editing, Filmmakers, Art Direction, Motion Design, Interactive Arts,
-                Visualizers, Pitch design, Virtual Production, Music videos,
-                Commercials, Film.
+                {t.studio.servicesList}
               </ul>
             </div>
             <div>
-              <h2 className="font-semibold mt-8">CLIENTS</h2>
+              <h2 className="font-semibold mt-8">{t.studio.clients}</h2>
               <ul className="opacity-80 space-y-0">
                 {["Mama Dousha", "Pijama Studio", "Rumbo Media", "Universal Pixel Studio", "Trez®"].map((c) => (
                   <li key={c}>{c}</li>
@@ -63,7 +75,7 @@ export default function Home() {
               </ul>
             </div>
             <div>
-              <h2 className="font-semibold mt-8">FOLLOW</h2>
+              <h2 className="font-semibold mt-8">{t.studio.follow}</h2>
               <ul className="opacity-80 space-y-0 text-rose-400">
                 {[
                   { name: "Instagram", href: "https://www.instagram.com/natatelevision/" },
@@ -78,32 +90,20 @@ export default function Home() {
               </ul>
             </div>
             <div>
-              <h2 className="font-semibold mt-8">LOCATION</h2>
-              <p className="opacity-80">Carrer Canalejas 3, 08015 Barcelona, Spain</p>
+              <h2 className="font-semibold mt-8">{t.studio.location}</h2>
+              <p className="opacity-80">{t.studio.locationText}</p>
             </div>
             <div>
-              <h2 className="font-semibold mt-8">CAREERS</h2>
-              <p className="opacity-80">
-                For careers, submit your CV and portfolio / website / showreel to hi@natatelevision.com
-              </p>
+              <h2 className="font-semibold mt-8">{t.studio.careers}</h2>
+              <p className="opacity-80">{t.studio.careersText}</p>
             </div>
             <div>
-              <h2 className="font-semibold mt-8">CONTACT</h2>
-              <p className="opacity-80">
-                For any inquiries or further information you can email us at admin@natatelevision.com,
-                +619 92 63 11 (Noé Delaye), or visit us at Carrer Canalejas 3, Barcelona.
-                We offer a commission for successful project referrals.
-              </p>
+              <h2 className="font-semibold mt-8">{t.studio.contact}</h2>
+              <p className="opacity-80">{t.studio.contactText}</p>
             </div>
           </div>
         </section>
       </main>
-
-      <a href="/" className="fixed bottom-5 right-6 z-[50] text-xs md:text-sm uppercase tracking-wide opacity-80 text-rose-600 font-bold hover:opacity-100 transition">
-        NATA TELEVISION ©
-      </a>
-
-      <Nav />
     </>
   );
 }

@@ -2,6 +2,7 @@ import "./../styles/globals.css";
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import Nav from "@/components/Nav";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://natatelevision.com";
 const titleDefault = "Nata Television";
@@ -47,8 +48,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <link rel="preconnect" href="https://f.vimeocdn.com" />
       </head>
       <body className="antialiased">
-        {children}
-        <Nav />
+        <LanguageProvider>
+          {children}
+          <Nav />
+        </LanguageProvider>
       </body>
     </html>
   );

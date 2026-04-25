@@ -1,15 +1,11 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
-
-const tabs = [
-  { href: "/#works", label: "WORKS" },
-  { href: "/#studio", label: "STUDIO" },
-];
+import { useLang } from "@/contexts/LanguageContext";
+import { Lang } from "@/data/translations";
 
 export default function Nav() {
-  const path = usePathname() || "/";
+  const { lang, setLang, t } = useLang();
 
   return (
     <>
@@ -37,19 +33,30 @@ export default function Nav() {
       </Link>
 
       {/* TABS */}
-      <nav className="fixed left-6 bottom-6 z-[50] flex gap-6 ">
-        {tabs.map((t) => (
-            <Link
-              key={t.href}
-              href={t.href}
-              className={`tracking-wide ${
-                path === t.href ? "text-rose-500" : "text-neutral-300"
-              } hover:text-rose-400 transition`}
-            >
-              {t.label}
-            </Link>
+      <nav className="fixed left-6 bottom-6 z-[50] flex gap-6">
+        {([
+          { href: "/#works", label: t.nav.works },
+          { href: "/#studio", label: t.nav.studio },
+        ] as const).map((tab) => (
+          <Link
+            key={tab.href}
+            href={tab.href}
+            className="tracking-wide text-neutral-300 hover:text-rose-400 transition"
+          >
+            {tab.label}
+          </Link>
         ))}
       </nav>
+
+      {/* COPYRIGHT */}
+      <div className="fixed bottom-5 right-6 z-[50] flex items-center gap-3 text-xs uppercase tracking-wide">
+        <Link
+          href="/"
+          className="opacity-80 text-rose-600 font-bold hover:opacity-100 transition md:text-sm"
+        >
+          NATA TELEVISION ©
+        </Link>
+      </div>
     </>
   );
 }
