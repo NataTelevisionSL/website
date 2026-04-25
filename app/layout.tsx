@@ -7,7 +7,7 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://natatelevision.com";
 const titleDefault = "Nata Television";
 const description =
-  "Nata Television is a Barcelona-based creative studio specialising in film production, VFX, 3D animation, post-production, color grading, motion design and virtual production.";
+  "Nata Television (nata.tv) is a Barcelona-based creative studio specialising in film production, VFX, 3D animation, post-production, color grading, motion design and virtual production.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
