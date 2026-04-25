@@ -11,10 +11,11 @@ export default function Home() {
     <>
       <main>
         {/* HERO */}
-        <h1 className="fixed top-8 left-1/2 -translate-x-1/2 z-[50] block text-[9px] sm:text-xs md:text-sm lg:text-base text-white text-center whitespace-nowrap">
+        <h1 className="fixed top-8 left-1/2 -translate-x-1/2 z-[50] hidden md:block text-xs md:text-sm lg:text-base text-white text-center whitespace-nowrap">
           {t.tagline}
         </h1>
-        <div className="fixed top-12 left-1/2 -translate-x-1/2 z-[50] flex items-center gap-2 text-[9px] md:text-xs uppercase tracking-widest">
+        {/* Lang switcher: sota logo en mobil, centrat en desktop */}
+        <div className="fixed top-16 left-6 md:top-14 md:left-1/2 md:-translate-x-1/2 z-[50] flex items-center gap-2 text-[9px] md:text-xs uppercase tracking-widest">
           {(["en", "es", "ca"] as const).map((l, i) => (
             <>
               {i > 0 && <span key={`sep-${l}`} className="text-neutral-600">/</span>}
