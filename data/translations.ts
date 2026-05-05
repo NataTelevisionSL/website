@@ -7,7 +7,7 @@ export const translations = {
     studio: {
       h1: "Creative Production, Post-Production and Animation Studio.",
       description:
-        "We believe great work starts with people. Whatever your vision or budget, we work alongside you to find the right creative solution — one that fits your needs and tells your story with care. People are at the heart of everything we make.",
+        "We believe great work starts with people. Whatever your vision or budget, we work alongside you to find the right creative solution.",
       services: "SERVICES",
       servicesList:
         "Creative Studio, Production, Service Production, Post-Production, VFX, VFX supervision, 3d animation, 2d animation, Color grading, Editing, Filmmakers, Art Direction, Motion Design, Interactive Arts, Visualizers, Pitch design, Virtual Production, Music videos, Commercials, Film.",
@@ -29,7 +29,7 @@ export const translations = {
     studio: {
       h1: "Estudio Creativo de Producción, Post-Producción y Animación.",
       description:
-        "Creemos que el buen trabajo empieza por las personas. Sea cual sea tu visión o presupuesto, trabajamos contigo para encontrar la solución creativa adecuada — una que se adapte a tus necesidades y cuente tu historia con cuidado. Las personas están en el centro de todo lo que hacemos.",
+        "Creemos que el buen trabajo empieza por las personas. Sea cual sea tu visión o presupuesto, trabajamos contigo para encontrar la solución creativa adecuada.",
       services: "SERVICIOS",
       servicesList:
         "Estudio Creativo, Producción, Producción de Servicio, Post-Producción, VFX, Supervisión VFX, Animación 3D, Animación 2D, Colorización, Montaje, Dirección de Arte, Motion Design, Artes Interactivas, Visualizadores, Diseño de Pitch, Producción Virtual, Videoclips, Publicidad, Cine.",
@@ -51,7 +51,7 @@ export const translations = {
     studio: {
       h1: "Estudi Creatiu de Producció, Post-Producció i Animació.",
       description:
-        "Creiem que el bon treball comença per les persones. Sigui quina sigui la teva visió o pressupost, treballem al teu costat per trobar la solució creativa adequada — una que s'adapti a les teves necessitats i expliqui la teva història amb cura. Les persones són al centre de tot el que fem.",
+        "Creiem que el bon treball comença per les persones. Sigui quina sigui la teva visió o pressupost, treballem al teu costat per trobar la solució creativa adequada.",
       services: "SERVEIS",
       servicesList:
         "Estudi Creatiu, Producció, Producció de Servei, Post-Producció, VFX, Supervisió VFX, Animació 3D, Animació 2D, Colorització, Muntatge, Direcció d'Art, Motion Design, Arts Interactives, Visualitzadors, Disseny de Pitch, Producció Virtual, Videoclips, Publicitat, Cinema.",
