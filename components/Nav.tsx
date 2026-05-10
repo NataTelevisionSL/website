@@ -14,6 +14,9 @@ export default function Nav() {
         <div className="absolute inset-0 ring-2 ring-rose-500/50" />
       </div>
 
+      {/* TOP BAR GRADIENT */}
+      <div className="fixed top-0 left-0 right-0 h-20 bg-gradient-to-b from-black/60 to-transparent pointer-events-none z-[45]" aria-hidden="true" />
+
       {/* LOGO */}
       <Link
         href="/"
@@ -23,30 +26,31 @@ export default function Nav() {
         <Image src="/svg/logo.svg" alt="Nata TV" width={140} height={40} />
       </Link>
 
-      {/* ICONA MADUIXA -> Studio */}
-      <Link
-        href="/#studio"
-        className="fixed right-6 top-6 z-[50] hover:opacity-90 transition"
-        aria-label="Studio"
-      >
-        <Image src="/svg/strawberry.svg" alt="mark" width={40} height={40} />
-      </Link>
-
-      {/* TABS */}
-      <nav className="fixed left-6 bottom-6 z-[50] flex gap-6">
-        {([
-          { href: "/#works", label: t.nav.works },
-          { href: "/#studio", label: t.nav.studio },
-        ] as const).map((tab) => (
-          <Link
-            key={tab.href}
-            href={tab.href}
-            className="tracking-wide text-neutral-300 hover:text-rose-400 transition"
-          >
-            {tab.label}
-          </Link>
-        ))}
-      </nav>
+      {/* LANG + MADUIXA (top right) */}
+      <div className="fixed right-6 top-6 z-[50] flex items-center gap-3">
+        <div className="flex overflow-hidden text-[11px] font-semibold tracking-widest uppercase">
+          {(["en", "es", "ca"] as const).map((l) => (
+            <button
+              key={l}
+              onClick={() => setLang(l)}
+              className={`px-2.5 py-1 transition ${
+                lang === l
+                  ? "bg-neutral-200 text-neutral-900"
+                  : "bg-black/80 text-neutral-400 hover:text-neutral-200"
+              }`}
+            >
+              {l.toUpperCase()}
+            </button>
+          ))}
+        </div>
+        <Link
+          href="/#studio"
+          className="hover:opacity-90 transition"
+          aria-label="Studio"
+        >
+          <Image src="/svg/strawberry.svg" alt="mark" width={40} height={40} />
+        </Link>
+      </div>
 
       {/* COPYRIGHT */}
       <div className="fixed bottom-5 right-6 z-[50] flex items-center gap-3 text-xs uppercase tracking-wide">

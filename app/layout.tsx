@@ -5,7 +5,7 @@ import Nav from "@/components/Nav";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://natatelevision.com";
-const titleDefault = "Nata Television";
+const titleDefault = "Nata.tv | Creative Production, Post-Production and Animation Studio";
 const description =
   "Nata Television (nata.tv) is a Barcelona-based creative studio specialising in film production, VFX, 3D animation, post-production, color grading, motion design and virtual production.";
 
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default: titleDefault,
-    template: "%s — Nata Television",
+    template: "%s — Nata.tv",
   },
   description,
   alternates: { canonical: "/" },
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className="bg-neutral-900 text-neutral-200">
+    <html lang="en" className="bg-black text-neutral-200">
       <head>
         {/* Millora temps de connexió amb Vimeo */}
         <link rel="preconnect" href="https://player.vimeo.com" />

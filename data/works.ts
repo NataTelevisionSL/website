@@ -3,14 +3,18 @@ export type Work = {
   title: string;
   year: number | string;
   description?: string;
-  vimeoId: string; 
+  vimeoId: string;
+  category?: string;
+  tag?: string;
 };
 
 export const WORKS: Work[] = [
   {
     id: 2,
-    title: "ESTA ES TU CASA - Kapo & Camilo",
+    title: "ESTA ES TU CASA",
     year: 2025,
+    category: "MUSIC VIDEO · PIJAMA STUDIO",
+    tag: "#VFX",
     description: `Client: PIJAMA STUDIO. Post-production / VFX of sixty shots for the new music video of Kapo & Camilo. 
         VFX team:
         Noé Delaye Suñer,
@@ -31,8 +35,10 @@ export const WORKS: Work[] = [
 
   {
     id: 1,
-    title: "LA VITAMINA DE L'AMOR - Mama Dousha",
+    title: "LA VITAMINA DE L'AMOR",
     year: 2025,
+    category: "MUSIC VIDEO · MAMA DOUSHA",
+    tag: "#VFX",
     description: `Client: MAMA DOUSHA. Post-production / VFX. 
         VFX Supervision:
         Ariadna Ollé,
@@ -47,8 +53,10 @@ export const WORKS: Work[] = [
   
   {
     id: 0,
-    title: "MISSING PIECES - TV Series Pitch",
+    title: "MISSING PIECES",
     year: 2021,
+    category: "3D ANIMATION · TV SERIES PITCH",
+    tag: "#Animation",
     description: `3D Animation. 
         Direction:
         Roger Piñol,
