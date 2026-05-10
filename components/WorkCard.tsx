@@ -1,12 +1,15 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Player from "@vimeo/player";
 import { Work } from "@/data/works";
 import { useLang } from "@/contexts/LanguageContext";
 
 export default function WorkCard({ work, large }: { work: Work; large?: boolean }) {
   const { t } = useLang();
   const [thumb, setThumb] = useState<string | null>(null);
+  const [ready, setReady] = useState(false);
   const [open, setOpen] = useState(false);
+  const iframeRef = useRef<HTMLIFrameElement | null>(null);
 
   useEffect(() => {
     fetch(`/api/vimeo/thumbnail?id=${work.vimeoId}`)
@@ -14,6 +17,24 @@ export default function WorkCard({ work, large }: { work: Work; large?: boolean 
       .then((d) => setThumb(d.thumbnail ?? null))
       .catch(() => null);
   }, [work.vimeoId]);
+
+  useEffect(() => {
+    if (!iframeRef.current) return;
+    const player = new Player(iframeRef.current);
+    let grace: ReturnType<typeof setTimeout>;
+    let fallback: ReturnType<typeof setTimeout>;
+
+    player.on("play", () => {
+      grace = setTimeout(() => setReady(true), 200);
+    });
+    fallback = setTimeout(() => setReady(true), 5000);
+
+    return () => {
+      clearTimeout(grace);
+      clearTimeout(fallback);
+      player.destroy();
+    };
+  }, []);
 
   // Lock body scroll when modal open
   useEffect(() => {
@@ -23,19 +44,36 @@ export default function WorkCard({ work, large }: { work: Work; large?: boolean 
 
   return (
     <>
-      {/* Thumbnail card */}
+      {/* Video card */}
       <button
         onClick={() => setOpen(true)}
         className={`relative w-full overflow-hidden bg-black group cursor-pointer ${
           large ? "aspect-[16/7]" : "aspect-[16/10]"
         }`}
       >
+        {/* Background video — pointer-events-none so clicks pass through */}
+        <iframe
+          ref={iframeRef}
+          src={`https://player.vimeo.com/video/${work.vimeoId}?background=1&autoplay=1&loop=1&muted=1&dnt=1`}
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[112%] aspect-video pointer-events-none"
+          title={work.title}
+        />
+
+        {/* Poster — fades out once video is playing */}
         {thumb && (
-          <img
-            src={thumb}
-            alt={work.title}
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-          />
+          <div
+            className={`absolute inset-0 transition-opacity duration-700 ${
+              ready ? "opacity-0 pointer-events-none" : "opacity-100"
+            }`}
+          >
+            <img
+              src={thumb}
+              alt={work.title}
+              className="w-full h-full object-cover"
+            />
+          </div>
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
         <div className="absolute bottom-0 left-0 p-5 md:p-7">
