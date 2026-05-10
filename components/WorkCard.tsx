@@ -48,7 +48,7 @@ export default function WorkCard({ work, large }: { work: Work; large?: boolean 
       <button
         onClick={() => setOpen(true)}
         className={`relative w-full overflow-hidden bg-black group cursor-pointer ${
-          large ? "aspect-[16/7]" : "aspect-[16/10]"
+          large ? "aspect-[16/10] md:aspect-[16/7]" : "aspect-[16/10]"
         }`}
       >
         {/* Background video — pointer-events-none so clicks pass through */}
