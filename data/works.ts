@@ -9,11 +9,35 @@ export type Work = {
 };
 
 export const WORKS: Work[] = [
+    {
+    id: 3,
+    title: "¿CUÁNTO QUEDARÁ?",
+    year: 2026,
+    category: "MUSIC VIDEO · FernandOrellana",
+    tag: "#Collaboration w/David Alcázar",
+    description: `Music Video. 
+        Director:
+        David Alcázar Carbó,
+        Camera:
+        Alejandro Ortubia,
+        Editor:
+        Aldo Mas,
+        Graphic Designer:
+        R. González,
+        Actors:
+        Erik Tallada,
+        Laorden,
+        Cubero Yisus.
+        Special mention:
+        Barcala Banys.
+        `,
+    vimeoId: "1192521945",
+  },
   {
     id: 2,
     title: "ESTA ES TU CASA",
     year: 2025,
-    category: "MUSIC VIDEO · PIJAMA STUDIO",
+    category: "MUSIC VIDEO · Camilo & Kapo",
     tag: "#VFX",
     description: `Client: PIJAMA STUDIO. Post-production / VFX of sixty shots for the new music video of Kapo & Camilo. 
         VFX team:

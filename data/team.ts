@@ -19,7 +19,7 @@ export const TEAM: Member[] = [
   {
     name: "Noé Delaye",
     roles: ["CEO", "3D GENERALIST"],
-    refs: "Pepsi Football Nation, CUPRA Tindaya Showcar, SHISHEIDO Elixir",
+    refs: "Pepsi Football Nation, CUPRA Tindaya Showcar, Subway Surfers City trailer, Modelo 77, SHISHEIDO Elixir",
     instagram: "@noe.dly",
     linkedin: "https://www.linkedin.com/in/no%C3%A9-delaye-su%C3%B1er-043229231/",
     reel: "",
@@ -35,7 +35,7 @@ export const TEAM: Member[] = [
   {
     name: "Carlos Yau",
     roles: ["VFX SUPERVISOR", "COMPOSITOR",  "HEAD OF VIRTUAL PROD"],
-    refs: "Labyrinth - Kill For Your Love, Riders Republic _ win More Than Gold, Control Room",
+    refs: "Powerade FIFA World Cup, Oppo Reno 5 Commercial, Labyrinth - Kill For Your Love, Riders Republic _ win More Than Gold, Control Room",
     instagram: "@cyau49",
     linkedin: "https://www.linkedin.com/in/carlosyau/",
     reel: "",
