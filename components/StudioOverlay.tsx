@@ -124,12 +124,17 @@ export default function StudioOverlay({ onClose }: { onClose: () => void }) {
             {/* LOCATION */}
             <div>
               <h2 className="font-semibold  mt-8">LOCATION</h2>
-              <p className="opacity-80">
+              <a
+                href="https://maps.app.goo.gl/LFu9RKNHmMJRV9tU8"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="opacity-80 hover:opacity-100 hover:text-rose-400 transition underline underline-offset-4"
+              >
                 Carrer Canalejas 3,
                 08015 Barcelona
                 <br />
                 Spain
-              </p>
+              </a>
             </div>
 
             {/* CAREERS */}

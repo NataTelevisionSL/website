@@ -152,7 +152,14 @@ export default function Home() {
           <footer className="border-t border-b border-neutral-800 grid grid-cols-1 sm:grid-cols-2 gap-0 text-sm">
             <div className="px-8 py-10 border-b sm:border-b-0 sm:border-r border-neutral-800">
               <h2 className="text-xs font-semibold uppercase tracking-widest text-neutral-500 mb-3">{t.studio.location}</h2>
-              <p className="opacity-60">{t.studio.locationText}</p>
+              <a
+                href="https://maps.app.goo.gl/LFu9RKNHmMJRV9tU8"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="opacity-60 hover:opacity-100 hover:text-rose-400 transition underline underline-offset-4"
+              >
+                {t.studio.locationText}
+              </a>
             </div>
             <div className="px-8 py-10">
               <h2 className="text-xs font-semibold uppercase tracking-widest text-neutral-500 mb-3">{t.studio.follow}</h2>

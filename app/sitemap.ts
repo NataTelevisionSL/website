@@ -1,7 +1,7 @@
 // app/sitemap.ts
 export default function sitemap() {
   const base = process.env.NEXT_PUBLIC_SITE_URL || "https://natatelevision.com";
-  const routes = ["", "/works"];
+  const routes = [""];
   const now = new Date();
 
   return routes.map((p) => ({
