@@ -30,6 +30,7 @@ export type Course = {
     frequency: ML;
     sessionDuration: ML;
     price: string;
+    language: ML;
   };
   groups: CourseGroup[];
   syllabus: CourseSession[];
@@ -105,6 +106,11 @@ export const COURSES: Course[] = [
         ca: "2 hores per sessió",
       },
       price: "250€ (125€/mes)",
+      language: {
+        en: "Catalan or Spanish",
+        es: "Catalán o Castellano",
+        ca: "Català o Castellà",
+      },
     },
     groups: [
       {

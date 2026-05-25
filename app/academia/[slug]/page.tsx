@@ -92,6 +92,7 @@ export default function CoursePage({ params }: { params: { slug: string } }) {
               { label: ta.frequency, value: course.details.frequency[lang] },
               { label: ta.sessionDuration, value: course.details.sessionDuration[lang] },
               { label: ta.price, value: course.details.price },
+              { label: ta.language, value: course.details.language[lang] },
             ].map(({ label, value }) => (
               <div key={label} className="flex justify-between items-baseline py-3">
                 <p className="text-[10px] uppercase tracking-widest text-neutral-500">{label}</p>
