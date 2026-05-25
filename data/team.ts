@@ -4,6 +4,7 @@ export type Member = {
   refs?: string;
   instagram?: string;
   linkedin?: string;
+  imdb?: string;
   reel?: string;
 };
 
@@ -30,6 +31,7 @@ export const TEAM: Member[] = [
     refs: "Magic: The Gathering, League of Legends: Paranoia, Subway Surfers City, Google Android XR: CES 2026, Netflix Bird Box Barcelona, Society of the Snow.",
     instagram: "@rogerpinol_",
     linkedin: "https://www.linkedin.com/in/rogerpinol",
+    imdb: "https://www.imdb.com/name/nm13080324/",
     reel: "",
   },
   {

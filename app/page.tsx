@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import VimeoBackground from "@/components/VimeoBackground";
 import WorkCard from "@/components/WorkCard";
 import ServicesTicker from "@/components/ServicesTicker";
@@ -137,6 +138,17 @@ export default function Home() {
                       ▶ Reel
                     </a>
                   )}
+                  {member.imdb && (
+                    <a
+                      href={member.imdb}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-xs border border-neutral-700 px-3 py-1.5 hover:border-rose-500 hover:text-rose-400 transition w-fit"
+                    >
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="3" fill="currentColor" opacity="0.15"/><text x="2" y="17" fontSize="11" fontWeight="bold" fill="currentColor">IMDb</text></svg>
+                      IMDb
+                    </a>
+                  )}
                 </div>
               </div>
             ))}
@@ -149,7 +161,7 @@ export default function Home() {
           <ContactForm />
 
           {/* Footer */}
-          <footer className="border-t border-b border-neutral-800 grid grid-cols-1 sm:grid-cols-2 gap-0 text-sm">
+          <footer className="border-t border-b border-neutral-800 grid grid-cols-1 sm:grid-cols-3 gap-0 text-sm">
             <div className="px-8 py-10 border-b sm:border-b-0 sm:border-r border-neutral-800">
               <h2 className="text-xs font-semibold uppercase tracking-widest text-neutral-500 mb-3">{t.studio.location}</h2>
               <a
@@ -161,7 +173,7 @@ export default function Home() {
                 {t.studio.locationText}
               </a>
             </div>
-            <div className="px-8 py-10">
+            <div className="px-8 py-10 border-b sm:border-b-0 sm:border-r border-neutral-800">
               <h2 className="text-xs font-semibold uppercase tracking-widest text-neutral-500 mb-3">{t.studio.follow}</h2>
               <ul className="space-y-1">
                 {[
@@ -174,6 +186,16 @@ export default function Home() {
                     </a>
                   </li>
                 ))}
+              </ul>
+            </div>
+            <div className="px-8 py-10">
+              <h2 className="text-xs font-semibold uppercase tracking-widest text-neutral-500 mb-3">{t.studio.sections}</h2>
+              <ul className="space-y-1">
+                <li>
+                  <Link href="/academia" className="text-rose-400 hover:underline underline-offset-4">
+                    {t.academia.title}
+                  </Link>
+                </li>
               </ul>
             </div>
           </footer>

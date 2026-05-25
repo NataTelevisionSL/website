@@ -26,6 +26,14 @@ export default function Nav() {
         <Image src="/svg/logo.svg" alt="Nata TV" width={140} height={40} />
       </Link>
 
+      {/* ACADEMIA NAV */}
+      <Link
+        href="/academia"
+        className="fixed left-6 top-[70px] z-[50] w-[140px] text-center text-[11px] font-semibold tracking-[0.2em] uppercase text-neutral-500 hover:text-rose-500 transition"
+      >
+        | {t.academia.label} |
+      </Link>
+
       {/* LANG + MADUIXA (top right) */}
       <div className="fixed right-6 top-6 z-[50] flex items-center gap-3">
         <div className="flex overflow-hidden text-[11px] font-semibold tracking-widest uppercase">

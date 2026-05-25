@@ -37,10 +37,11 @@ export default function VimeoBackground({ id, poster }: Props) {
     <div className="vimeo-cover relative bg-black">
       <iframe
         ref={iframeRef}
-        src={`https://player.vimeo.com/video/${id}?background=1&autoplay=1&loop=1&muted=1&dnt=1`}
+        src={`https://player.vimeo.com/video/${id}?background=1&autoplay=1&loop=1&muted=1&dnt=1&autopause=0&quality=auto`}
         allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
         referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen
+        loading="eager"
         title="Background video"
       />
 

@@ -46,6 +46,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <link rel="preconnect" href="https://player.vimeo.com" />
         <link rel="preconnect" href="https://i.vimeocdn.com" />
         <link rel="preconnect" href="https://f.vimeocdn.com" />
+        <link rel="preconnect" href="https://fresnel.vimeocdn.com" />
+        <link rel="preconnect" href="https://skyfire.vimeocdn.com" />
+        <link rel="dns-prefetch" href="https://vimeo.com" />
+        <link rel="dns-prefetch" href="https://vimeocdn.com" />
       </head>
       <body className="antialiased">
         <LanguageProvider>
