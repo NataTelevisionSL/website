@@ -38,7 +38,7 @@ export default function AcademiaPage() {
             <div className="flex-1">
               <div className="flex items-center gap-3 mb-2">
                 <h2 className="text-3xl md:text-4xl font-black uppercase group-hover:text-rose-500 transition">
-                  {course.title}
+                  {course.title[lang]}
                 </h2>
                 <span className={`text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 ${
                   course.status === "open" ? "bg-emerald-500/15 text-emerald-400" :
@@ -49,7 +49,7 @@ export default function AcademiaPage() {
                 </span>
               </div>
               <p className="text-sm text-neutral-400 uppercase tracking-widest mb-4">
-                {course.subtitle}
+                {course.subtitle[lang]}
               </p>
               <p className="text-neutral-300 text-base leading-relaxed max-w-2xl">
                 {course.shortDescription[lang]}

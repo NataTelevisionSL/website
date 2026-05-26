@@ -34,11 +34,11 @@ export default function CoursePage({ params }: { params: { slug: string } }) {
             {course.tag[lang]}
           </div>
           <h1 className="text-4xl md:text-5xl font-black uppercase leading-none mb-1">
-            {course.title}
+            {course.title[lang]}
           </h1>
           <div className="flex items-center gap-3 mt-2 mb-1">
             <p className="text-xl md:text-2xl text-neutral-400 uppercase tracking-widest font-light">
-              {course.subtitle}
+              {course.subtitle[lang]}
             </p>
             <span className={`text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 ${
               course.status === "open" ? "bg-emerald-500/15 text-emerald-400" :
@@ -228,7 +228,7 @@ export default function CoursePage({ params }: { params: { slug: string } }) {
 
           {/* CTA */}
           <a
-            href={`mailto:${course.contact}?subject=${encodeURIComponent(course.title + " — " + course.tag[lang])}`}
+            href={`mailto:${course.contact}?subject=${encodeURIComponent(course.title[lang] + " — " + course.tag[lang])}`}
             className="inline-flex items-center gap-3 bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold uppercase tracking-widest px-8 py-4 transition"
           >
             {ta.contactCta} →

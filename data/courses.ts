@@ -18,8 +18,8 @@ export type CourseStatus = "open" | "full" | "coming-soon";
 export type Course = {
   slug: string;
   status: CourseStatus;
-  title: string;
-  subtitle: string;
+  title: ML;
+  subtitle: ML;
   tag: ML;
   shortDescription: ML;
   description: ML[];
@@ -45,8 +45,16 @@ export const COURSES: Course[] = [
   {
     slug: "taller-3d-verano-2026",
     status: "open",
-    title: "TALLER DE 3D",
-    subtitle: "Animación, VFX, Archviz, IA",
+    title: {
+      en: "3D WORKSHOP",
+      es: "TALLER DE 3D",
+      ca: "TALLER DE 3D",
+    },
+    subtitle: {
+      en: "Animation, VFX, Archviz, AI",
+      es: "Animación, VFX, Archviz, IA",
+      ca: "Animació, VFX, Archviz, IA",
+    },
     tag: {
       en: "Summer Course 2026",
       es: "Curso de Verano 2026",
@@ -226,8 +234,16 @@ export const COURSES: Course[] = [
   {
     slug: "taller-dibujo-digital-procreate-2026",
     status: "open",
-    title: "TALLER DE DIBUJO DIGITAL CON PROCREATE",
-    subtitle: "Iniciación al Concept Art",
+    title: {
+      en: "DIGITAL DRAWING WORKSHOP WITH PROCREATE",
+      es: "TALLER DE DIBUJO DIGITAL CON PROCREATE",
+      ca: "TALLER DE DIBUIX DIGITAL AMB PROCREATE",
+    },
+    subtitle: {
+      en: "Introduction to Concept Art",
+      es: "Iniciación al Concept Art",
+      ca: "Iniciació al Concept Art",
+    },
     tag: {
       en: "Summer Course 2026",
       es: "Curso de Verano 2026",
