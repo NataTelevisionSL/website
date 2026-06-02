@@ -10,15 +10,6 @@ export type Work = {
 
 export const WORKS: Work[] = [
   {
-    id: 4,
-    title: "TREX ANTHEM AD SPOT",
-    year: 2026,
-    category: "AD SPOT · TREX",
-    tag: "#VFX",
-    description: ``,
-    vimeoId: "1197628714",
-  },
-    {
     id: 3,
     title: "¿CUÁNTO QUEDARÁ?",
     year: 2026,
@@ -41,6 +32,15 @@ export const WORKS: Work[] = [
         Barcala Banys.
         `,
     vimeoId: "1192521945",
+  },
+  {
+    id: 4,
+    title: "TREX ANTHEM AD SPOT",
+    year: 2026,
+    category: "AD SPOT · TREX",
+    tag: "#VFX",
+    description: ``,
+    vimeoId: "1197628714",
   },
   {
     id: 2,

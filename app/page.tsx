@@ -44,11 +44,17 @@ export default function Home() {
 
         {/* WORKS */}
         <section id="works" className="grid grid-cols-1 md:grid-cols-2">
-          {WORKS.map((w, i) => (
-            <div key={w.id} className={i % 3 === 0 ? "md:col-span-2" : ""}>
-              <WorkCard work={w} large={i % 3 === 0} />
-            </div>
-          ))}
+          {WORKS.map((w, i) => {
+            const isLarge = i % 3 === 0;
+            const isAlone = !isLarge && i % 3 === 1 && i === WORKS.length - 1;
+            return (
+              <div key={w.id} className={isLarge || isAlone ? "md:col-span-2" : ""}>
+                <div className={isAlone ? "md:w-1/2 md:mx-auto" : ""}>
+                  <WorkCard work={w} large={isLarge} />
+                </div>
+              </div>
+            );
+          })}
         </section>
 
         {/* STUDIO */}

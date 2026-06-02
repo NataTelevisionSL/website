@@ -6,7 +6,7 @@ const CLIENTS = [
   "Pijama Studio",
   "Rumbo Media",
   "Universal Pixel Studio",
-  "Trez®",
+  "Trex®",
 ];
 
 export default function ClientsTicker() {
