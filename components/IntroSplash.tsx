@@ -1,5 +1,10 @@
 "use client";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useLayoutEffect, useState, useRef } from "react";
+
+// useLayoutEffect fires before paint on client → no flash
+// falls back to useEffect on server to avoid SSR warnings
+const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 function seeded(n: number) {
   return Math.abs(Math.sin(n * 9301 + 49297)) % 1;
@@ -63,7 +68,7 @@ export default function IntroSplash() {
   const [fading, setFading] = useState(false);
   const scrambled = useScramble(show);
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     setShow(true);
   }, []);
 
