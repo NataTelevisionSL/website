@@ -17,7 +17,7 @@ const ROWS = Array.from({ length: NUM_ROWS }, (_, i) => ({
 
 const CHARS = "!#@€/?¿|()[]{}$%^&*~<>+=_";
 const TARGET = "LOADING";
-const SCRAMBLE_MS = 3500;
+const SCRAMBLE_MS = 1800;
 
 function useScramble(active: boolean) {
   const [text, setText] = useState(() =>
@@ -70,7 +70,7 @@ export default function IntroSplash() {
   useEffect(() => {
     if (!show) return;
 
-    const MIN_MS = 4500;
+    const MIN_MS = 2500;
     const start = Date.now();
 
     function dismiss() {
