@@ -70,4 +70,12 @@ a { text-underline-offset: 2px; }
   height: 100%;
 }
 
+@keyframes nata-slide-l {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes nata-slide-r {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
 

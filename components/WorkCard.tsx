@@ -117,7 +117,7 @@ export default function WorkCard({ work, large }: { work: Work; large?: boolean 
             {/* Video — no controls, muted, autoplay */}
             <div className="relative aspect-[16/9] w-full bg-black">
               <iframe
-                src={`https://player.vimeo.com/video/${work.vimeoId}?autoplay=1&muted=1&controls=0&background=0&dnt=1&title=0&byline=0&portrait=0`}
+                src={`https://player.vimeo.com/video/${work.vimeoId}?autoplay=1&loop=1&muted=1&controls=0&background=0&dnt=1&title=0&byline=0&portrait=0`}
                 allow="autoplay; fullscreen; picture-in-picture"
                 allowFullScreen
                 className="absolute inset-0 w-full h-full"

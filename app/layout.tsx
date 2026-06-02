@@ -2,6 +2,7 @@ import "./../styles/globals.css";
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import Nav from "@/components/Nav";
+import IntroSplash from "@/components/IntroSplash";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://natatelevision.com";
@@ -53,6 +54,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body className="antialiased">
         <LanguageProvider>
+          <IntroSplash />
           {children}
           <Nav />
         </LanguageProvider>
