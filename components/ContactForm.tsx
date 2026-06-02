@@ -107,7 +107,27 @@ export default function ContactForm() {
         </div>
       </form>
       <p className="mt-10 text-xs text-neutral-600 leading-relaxed">
-        {f.fallback}
+        {f.fallback.split(/(hi@natatelevision\.com|\+619 92 63 11)/).map((part, i) => {
+          if (part === "hi@natatelevision.com") {
+            return (
+              <a key={i} href="mailto:hi@natatelevision.com"
+                className="text-white font-semibold text-sm tracking-wide hover:opacity-80 transition"
+              >
+                hi@natatelevision.com
+              </a>
+            );
+          }
+          if (part === "+619 92 63 11") {
+            return (
+              <a key={i} href="tel:+619926311"
+                className="text-white font-semibold text-sm tracking-wide hover:opacity-80 transition"
+              >
+                +619 92 63 11
+              </a>
+            );
+          }
+          return part;
+        })}
       </p>
     </div>
   );
