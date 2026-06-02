@@ -37,7 +37,7 @@ export const TEAM: Member[] = [
   {
     name: "Carlos Yau",
     roles: ["VFX SUPERVISOR", "COMPOSITOR",  "HEAD OF VIRTUAL PROD"],
-    refs: "Powerade FIFA World Cup, Oppo Reno 5 Commercial, Labyrinth - Kill For Your Love, Riders Republic _ win More Than Gold, Control Room",
+    refs: "Powerade FIFA World Cup, Oppo Reno 5 Commercial, Labyrinth - Kill For Your Love, Riders Republic _ win More Than Gold , Control Room",
     instagram: "@cyau49",
     linkedin: "https://www.linkedin.com/in/carlosyau/",
     reel: "",
