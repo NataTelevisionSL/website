@@ -20,7 +20,7 @@ export default function Home() {
           {t.tagline}
         </h1>
         <section className="relative h-screen">
-          <VimeoBackground id="1117688278" poster="/img/posters/main.jpg" />
+          <VimeoBackground id="1201398283" poster="/img/posters/main.jpg" />
           {/* SCROLL INDICATOR */}
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-[30] flex flex-col items-center gap-1 text-rose-500 pointer-events-none select-none">
             <svg width="28" height="44" viewBox="0 0 28 44" fill="none" xmlns="http://www.w3.org/2000/svg">
