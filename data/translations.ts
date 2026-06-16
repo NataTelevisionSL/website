@@ -29,6 +29,7 @@ export const translations = {
       contactIntro: "If you have any questions, feel free to write to us or come visit us at:",
       statusOpen: "Spots available",
       statusFull: "Sold out",
+      groupStatusFull: "Fully booked",
       statusComingSoon: "Coming soon",
     },
     studio: {
@@ -104,6 +105,7 @@ export const translations = {
       contactIntro: "Si tienes cualquier duda, escríbenos o visítanos en:",
       statusOpen: "Plazas abiertas",
       statusFull: "Plazas agotadas",
+      groupStatusFull: "Plazas completas",
       statusComingSoon: "Próximamente",
     },
     studio: {
@@ -179,6 +181,7 @@ export const translations = {
       contactIntro: "Si tens qualsevol dubte, escriu-nos o visita'ns a:",
       statusOpen: "Places obertes",
       statusFull: "Places esgotades",
+      groupStatusFull: "Places completes",
       statusComingSoon: "Pròximament",
     },
     studio: {

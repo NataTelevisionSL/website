@@ -6,6 +6,7 @@ export type CourseGroup = {
   name: ML;
   period: ML;
   schedule: ML;
+  status?: "open" | "full";
 };
 
 export type CourseSession = {
@@ -133,6 +134,7 @@ export const COURSES: Course[] = [
           es: "Miércoles de 18:30 a 20:30h",
           ca: "Dimecres de 18:30 a 20:30h",
         },
+        status: "full",
       },
       {
         name: { en: "GROUP B", es: "GRUPO B", ca: "GRUP B" },

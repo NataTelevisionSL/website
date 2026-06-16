@@ -75,10 +75,20 @@ export default function CoursePage({ params }: { params: { slug: string } }) {
           {/* Schedule blocks */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-neutral-800 mb-8">
             {course.groups.map((group) => (
-              <div key={group.name.en} className="bg-black p-6 md:p-8">
-                <p className="text-[10px] uppercase tracking-widest text-rose-500 font-semibold mb-3">
-                  {group.name[lang]}
-                </p>
+              <div
+                key={group.name.en}
+                className={`bg-black p-6 md:p-8 ${group.status === "full" ? "opacity-60" : ""}`}
+              >
+                <div className="flex items-center gap-2 mb-3">
+                  <p className="text-[10px] uppercase tracking-widest text-rose-500 font-semibold">
+                    {group.name[lang]}
+                  </p>
+                  {group.status === "full" && (
+                    <span className="text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 bg-red-500/15 text-red-400">
+                      {ta.groupStatusFull}
+                    </span>
+                  )}
+                </div>
                 <p className="text-base font-bold mb-1">{group.period[lang]}</p>
                 <p className="text-sm text-neutral-400">{group.schedule[lang]}</p>
               </div>
