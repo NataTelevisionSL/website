@@ -134,7 +134,6 @@ export const COURSES: Course[] = [
           es: "Miércoles de 18:30 a 20:30h",
           ca: "Dimecres de 18:30 a 20:30h",
         },
-        status: "full",
       },
       {
         name: { en: "GROUP B", es: "GRUPO B", ca: "GRUP B" },
@@ -148,6 +147,7 @@ export const COURSES: Course[] = [
           es: "Sábados de 10:30 a 12:30h",
           ca: "Dissabtes de 10:30 a 12:30h",
         },
+        status: "full",
       },
     ],
     syllabus: [
