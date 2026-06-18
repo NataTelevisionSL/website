@@ -11,7 +11,7 @@ export type Work = {
 export const WORKS: Work[] = [
   {
     id: 5,
-    title: "TELECINCO - Gaudí 150 aniversario",
+    title: "TELECINCO - Gaudí 100 aniversario",
     year: 2026,
     category: "POST-PRODUCTION · TELECINCO",
     tag: "#VFX",
