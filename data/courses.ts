@@ -523,6 +523,108 @@ export const COURSES: Course[] = [
     web: "natatelevision.com",
     contact: "hi@natatelevision.com",
   },
+  {
+    slug: "mentoria-dibujo-digital",
+    status: "open",
+    courseType: "mentorship",
+    title: {
+      en: "DIGITAL DRAWING MENTORSHIP",
+      es: "MENTORÍA DE DIBUJO DIGITAL",
+      ca: "MENTORIA DE DIBUIX DIGITAL",
+    },
+    subtitle: {
+      en: "Introduction to Concept Art",
+      es: "Iniciación al Concept Art",
+      ca: "Iniciació al Concept Art",
+    },
+    tag: {
+      en: "Permanent Course",
+      es: "Curso permanente",
+      ca: "Curs permanent",
+    },
+    shortDescription: {
+      en: "Personalised digital drawing mentoring with Procreate for young people and adults who want to get started or strengthen their skills — flexible schedule, all year round.",
+      es: "Mentorías personalizadas de dibujo digital con Procreate para jóvenes y adultos que quieran iniciarse o reforzar lo que ya saben — horario flexible, todo el año.",
+      ca: "Mentories personalitzades de dibuix digital amb Procreate per a joves i adults que vulguin iniciar-se o reforçar el que ja saben — horari flexible, tot l'any.",
+    },
+    description: [
+      {
+        en: "Personalised digital drawing mentoring for young people and adults interested in learning digital illustration and conceptual design (Concept Art) using Procreate as the main tool. Rather than a fixed course, we adapt to what you need at any time of the year with a practical and artistic approach. No prior experience is necessary and you don't need to pursue Concept Art professionally: it's designed for those who simply want to learn digital drawing or illustration, as well as for those interested in discovering how visual design works in video games, animation or film.",
+        es: "Mentorías personalizadas de dibujo digital dirigidas a jóvenes y adultos interesados en iniciarse o reforzar sus conocimientos en ilustración digital y diseño conceptual (Concept Art), utilizando Procreate como herramienta principal. En lugar de un curso cerrado, nos adaptamos a lo que necesitas en cada momento del año con un enfoque práctico y artístico. No es necesario tener experiencia previa ni querer dedicarse profesionalmente al Concept Art: está pensado tanto para personas que simplemente quieran aprender a dibujar o ilustrar digitalmente, como para quienes tengan interés en descubrir cómo se trabaja el diseño visual en ámbitos como videojuegos, animación o cine.",
+        ca: "Mentories personalitzades de dibuix digital adreçades a joves i adults interessats a iniciar-se o reforçar els seus coneixements en il·lustració digital i disseny conceptual (Concept Art), utilitzant Procreate com a eina principal. En lloc d'un curs tancat, ens adaptem al que necessites en cada moment de l'any amb un enfocament pràctic i artístic. No és necessari tenir experiència prèvia ni voler dedicar-se professionalment al Concept Art: està pensat tant per a persones que simplement vulguin aprendre a dibuixar o il·lustrar digitalment, com per a aquells que tinguin interès en descobrir com es treballa el disseny visual en àmbits com videojocs, animació o cinema.",
+      },
+      {
+        en: "You decide what you want to learn and when — whether it's character design, scenarios, colour and light, composition or developing your own style. What matters is not just learning to use the tool, but understanding artistic principles that help you draw better and gain confidence.",
+        es: "Tú decides qué quieres aprender y cuándo — ya sea diseño de personajes, escenarios, color y luz, composición o desarrollar tu propio estilo. Lo importante no es solo aprender a usar la herramienta, sino entender principios artísticos que te ayuden a dibujar mejor y ganar confianza.",
+        ca: "Tu decideixes què vols aprendre i quan — ja sigui disseny de personatges, escenaris, color i llum, composició o desenvolupar el teu propi estil. El que importa no és només aprendre a usar l'eina, sinó entendre principis artístics que t'ajudin a dibuixar millor i guanyar confiança.",
+      },
+    ],
+    mentoring: {
+      en: "Included in the price, all students have direct access to the instructor outside of class to resolve doubts, request feedback or ask whatever they need. If a student cannot attend a class, it will be recorded and shared so they don't fall behind.",
+      es: "Incluido en el precio, todos los alumnos tienen acceso directo al profesor fuera de clase para resolver dudas, pedir feedback o consultar lo que necesiten. Si algún alumno no puede asistir a una clase, esta será grabada y compartida para que no pierda el ritmo.",
+      ca: "Inclòs en el preu, tots els alumnes tenen accés directe al professor fora de classe per resoldre dubtes, demanar feedback o consultar el que necessitin. Si algun alumne no pot assistir a una classe, aquesta serà gravada i compartida perquè no perdi el ritme.",
+    },
+    scheduleIntro: {
+      en: "Classes are designed to fit your routine, so we coordinate the day and time directly together. Available time blocks:",
+      es: "La idea es que las clases se adapten a tu rutina, por lo que coordinamos el día y la hora directamente entre nosotros. Los bloques disponibles son:",
+      ca: "La idea és que les classes s'adaptin a la teva rutina, per la qual cosa coordinem el dia i l'hora directament entre nosaltres. Els blocs disponibles són:",
+    },
+    scheduleNote: {
+      en: "If you need a slot outside these hours, we can discuss it and see if it's possible to arrange.",
+      es: "Si necesitas un hueco fuera de estos horarios, lo podemos hablar y vemos si es posible cuadrarlo.",
+      ca: "Si necessites un forat fora d'aquests horaris, ho podem parlar i veiem si és possible quadrar-ho.",
+    },
+    details: {
+      format: {
+        en: "In-person or remote",
+        es: "Presencial o remoto",
+        ca: "Presencial o remot",
+      },
+      price: "18€/hora",
+      language: {
+        en: "Catalan or Spanish",
+        es: "Catalán o castellano",
+        ca: "Català o castellà",
+      },
+    },
+    groups: [
+      {
+        name: { en: "WEEKDAYS", es: "ENTRE SEMANA", ca: "ENTRE SETMANA" },
+        period: { en: "", es: "", ca: "" },
+        schedule: {
+          en: "11:00–20:30h",
+          es: "de 11:00 a 20:30 h",
+          ca: "de 11:00 a 20:30 h",
+        },
+      },
+      {
+        name: { en: "SATURDAYS", es: "SÁBADOS", ca: "DISSABTES" },
+        period: { en: "", es: "", ca: "" },
+        schedule: {
+          en: "Mornings",
+          es: "Por las mañanas",
+          ca: "Al matí",
+        },
+      },
+    ],
+    syllabus: [],
+    equipment: {
+      en: "Each student must bring their own iPad compatible with Procreate and preferably an Apple Pencil to work comfortably during classes. If you have questions about device compatibility or need recommendations before starting, we can advise you. If you prefer online classes, you can work perfectly from home with your own equipment.",
+      es: "Es necesario que cada alumno traiga su propio iPad compatible con Procreate y, preferiblemente, Apple Pencil para poder trabajar cómodamente durante las clases. Si tienes dudas sobre si tu dispositivo es compatible o necesitas recomendación antes de comenzar, podemos asesorarte. Si prefieres hacer las clases de forma online, puedes trabajar perfectamente desde casa con tu propio equipo.",
+      ca: "És necessari que cada alumne porti el seu propi iPad compatible amb Procreate i, preferiblement, Apple Pencil per poder treballar còmodament durant les classes. Si tens dubtes sobre si el teu dispositiu és compatible o necessites recomanació abans de començar, podem assessorar-te. Si prefereixes fer les classes de forma online, pots treballar perfectament des de casa amb el teu propi equip.",
+    },
+    instructor: {
+      name: "Júlia Bosch",
+      bio: {
+        en: "Visual artist and active Concept artist with professional experience in creative projects and artistic training.",
+        es: "Artista visual y Concept artist en activo con experiencia profesional en proyectos creativos y formación artística.",
+        ca: "Artista visual i Concept artist en actiu amb experiència professional en projectes creatius i formació artística.",
+      },
+    },
+    location: "Carrer Canalejas, 3, Sants, Barcelona",
+    web: "natatelevision.com",
+    contact: "hi@natatelevision.com",
+  },
 ];
 
 export function getCourseBySlug(slug: string): Course | undefined {
