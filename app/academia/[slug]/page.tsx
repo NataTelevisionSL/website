@@ -12,6 +12,22 @@ export default function CoursePage({ params }: { params: { slug: string } }) {
   if (!course) notFound();
 
   const instructorMember = TEAM.find((m) => m.name === course.instructor.name);
+  const isMentorship = course.courseType === "mentorship";
+
+  const detailRows = isMentorship
+    ? [
+        course.details.format && { label: ta.format, value: course.details.format[lang] },
+        { label: ta.price, value: course.details.price },
+        course.details.language && { label: ta.language, value: course.details.language[lang] },
+      ].filter(Boolean) as { label: string; value: string }[]
+    : [
+        course.details.groups && { label: ta.groups, value: course.details.groups[lang] },
+        course.details.duration && { label: ta.duration, value: course.details.duration[lang] },
+        course.details.frequency && { label: ta.frequency, value: course.details.frequency[lang] },
+        course.details.sessionDuration && { label: ta.sessionDuration, value: course.details.sessionDuration[lang] },
+        { label: ta.price, value: course.details.price },
+        course.details.language && { label: ta.language, value: course.details.language[lang] },
+      ].filter(Boolean) as { label: string; value: string }[];
 
   return (
     <main className="min-h-screen bg-black text-neutral-200">
@@ -59,7 +75,7 @@ export default function CoursePage({ params }: { params: { slug: string } }) {
           ))}
           <div className="mt-8 p-6 border border-neutral-700 bg-neutral-900/50">
             <p className="text-[10px] uppercase tracking-widest text-rose-500 font-semibold mb-2">
-              Mentoría continua
+              {ta.mentoringTitle}
             </p>
             <p className="text-base text-neutral-300 leading-relaxed">
               {course.mentoring[lang]}
@@ -68,6 +84,48 @@ export default function CoursePage({ params }: { params: { slug: string } }) {
         </div>
 
         {/* SCHEDULE + DETAILS */}
+        {isMentorship ? (
+          <>
+            <div className="py-10 border-b border-neutral-800">
+              <h2 className="text-xl font-black uppercase mb-6">
+                | {ta.courseDetails} |
+              </h2>
+              <div className="divide-y divide-neutral-800">
+                {detailRows.map(({ label, value }) => (
+                  <div key={label} className="flex justify-between items-baseline py-3">
+                    <p className="text-[10px] uppercase tracking-widest text-neutral-500">{label}</p>
+                    <p className="text-sm text-neutral-200">{value}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="py-10 border-b border-neutral-800">
+              <h2 className="text-xl font-black uppercase mb-6">
+                | {ta.availableSchedule} |
+              </h2>
+              {course.scheduleIntro && (
+                <p className="text-base text-neutral-300 leading-relaxed mb-6">
+                  {course.scheduleIntro[lang]}
+                </p>
+              )}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-neutral-800 mb-6">
+                {course.groups.map((group) => (
+                  <div key={group.name.en} className="bg-black p-6 md:p-8">
+                    <p className="text-[10px] uppercase tracking-widest text-rose-500 font-semibold mb-3">
+                      {group.name[lang]}
+                    </p>
+                    <p className="text-sm text-neutral-400">{group.schedule[lang]}</p>
+                  </div>
+                ))}
+              </div>
+              {course.scheduleNote && (
+                <p className="text-sm text-neutral-400 leading-relaxed">
+                  {course.scheduleNote[lang]}
+                </p>
+              )}
+            </div>
+          </>
+        ) : (
         <div className="py-10 border-b border-neutral-800">
           <h2 className="text-xl font-black uppercase mb-6">
             | {ta.courseDetails} |
@@ -89,21 +147,16 @@ export default function CoursePage({ params }: { params: { slug: string } }) {
                     </span>
                   )}
                 </div>
-                <p className="text-base font-bold mb-1">{group.period[lang]}</p>
+                {group.period[lang] && (
+                  <p className="text-base font-bold mb-1">{group.period[lang]}</p>
+                )}
                 <p className="text-sm text-neutral-400">{group.schedule[lang]}</p>
               </div>
             ))}
           </div>
           {/* Details list */}
           <div className="divide-y divide-neutral-800">
-            {[
-              { label: ta.groups, value: course.details.groups[lang] },
-              { label: ta.duration, value: course.details.duration[lang] },
-              { label: ta.frequency, value: course.details.frequency[lang] },
-              { label: ta.sessionDuration, value: course.details.sessionDuration[lang] },
-              { label: ta.price, value: course.details.price },
-              { label: ta.language, value: course.details.language[lang] },
-            ].map(({ label, value }) => (
+            {detailRows.map(({ label, value }) => (
               <div key={label} className="flex justify-between items-baseline py-3">
                 <p className="text-[10px] uppercase tracking-widest text-neutral-500">{label}</p>
                 <p className="text-sm text-neutral-200">{value}</p>
@@ -111,8 +164,10 @@ export default function CoursePage({ params }: { params: { slug: string } }) {
             ))}
           </div>
         </div>
+        )}
 
         {/* SYLLABUS */}
+        {course.syllabus.length > 0 && (
         <div className="py-10 border-b border-neutral-800">
           <h2 className="text-xl font-black uppercase mb-6">
             | {ta.syllabus} — 8 {lang === "en" ? "SESSIONS" : lang === "es" ? "SESIONES" : "SESSIONS"} |
@@ -128,6 +183,7 @@ export default function CoursePage({ params }: { params: { slug: string } }) {
             ))}
           </div>
         </div>
+        )}
 
         {/* EQUIPMENT */}
         <div className="py-10 border-b border-neutral-800">
@@ -227,6 +283,7 @@ export default function CoursePage({ params }: { params: { slug: string } }) {
           </div>
 
           {/* Spots info */}
+          {!isMentorship && (
           <div className="border border-neutral-800 p-6 mb-8">
             <p className="text-sm text-neutral-300 leading-relaxed mb-4">
               {ta.limitedSpots}
@@ -235,13 +292,14 @@ export default function CoursePage({ params }: { params: { slug: string } }) {
               {ta.summerBonus}
             </p>
           </div>
+          )}
 
           {/* CTA */}
           <a
             href={`mailto:${course.contact}?subject=${encodeURIComponent(course.title[lang] + " — " + course.tag[lang])}`}
             className="inline-flex items-center gap-3 bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold uppercase tracking-widest px-8 py-4 transition"
           >
-            {ta.contactCta} →
+            {isMentorship ? ta.contactCtaMentorship : ta.contactCta} →
           </a>
         </div>
 

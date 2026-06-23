@@ -19,19 +19,23 @@ export type CourseStatus = "open" | "full" | "coming-soon";
 export type Course = {
   slug: string;
   status: CourseStatus;
+  courseType?: "workshop" | "mentorship";
   title: ML;
   subtitle: ML;
   tag: ML;
   shortDescription: ML;
   description: ML[];
   mentoring: ML;
+  scheduleIntro?: ML;
+  scheduleNote?: ML;
   details: {
-    groups: ML;
-    duration: ML;
-    frequency: ML;
-    sessionDuration: ML;
+    groups?: ML;
+    format?: ML;
+    duration?: ML;
+    frequency?: ML;
+    sessionDuration?: ML;
     price: string;
-    language: ML;
+    language?: ML;
   };
   groups: CourseGroup[];
   syllabus: CourseSession[];
@@ -47,9 +51,9 @@ export const COURSES: Course[] = [
     slug: "taller-3d-verano-2026",
     status: "open",
     title: {
-      en: "3D WORKSHOP",
-      es: "TALLER DE 3D",
-      ca: "TALLER DE 3D",
+      en: "3D SUMMER WORKSHOP",
+      es: "TALLER DE 3D DE VERANO",
+      ca: "TALLER DE 3D D'ESTIU",
     },
     subtitle: {
       en: "Animation, VFX, Archviz, AI",
@@ -125,9 +129,9 @@ export const COURSES: Course[] = [
       {
         name: { en: "GROUP A", es: "GRUPO A", ca: "GRUP A" },
         period: {
-          en: "24 June – 12 August",
-          es: "24 de Junio – 12 de Agosto",
-          ca: "24 de Juny – 12 d'Agost",
+          en: "1 July – 19 August",
+          es: "1 de Julio – 19 de Agosto",
+          ca: "1 de Juliol – 19 d'Agost",
         },
         schedule: {
           en: "Wednesdays 18:30–20:30h",
@@ -138,9 +142,9 @@ export const COURSES: Course[] = [
       {
         name: { en: "GROUP B", es: "GRUPO B", ca: "GRUP B" },
         period: {
-          en: "27 June – 15 August",
-          es: "27 de Junio – 15 de Agosto",
-          ca: "27 de Juny – 15 d'Agost",
+          en: "1 July – 22 August",
+          es: "1 de Julio – 22 de Agosto",
+          ca: "1 de Juliol – 22 d'Agost",
         },
         schedule: {
           en: "Saturdays 10:30–12:30h",
@@ -237,9 +241,9 @@ export const COURSES: Course[] = [
     slug: "taller-dibujo-digital-procreate-2026",
     status: "open",
     title: {
-      en: "DIGITAL DRAWING WORKSHOP WITH PROCREATE",
-      es: "TALLER DE DIBUJO DIGITAL CON PROCREATE",
-      ca: "TALLER DE DIBUIX DIGITAL AMB PROCREATE",
+      en: "DIGITAL DRAWING SUMMER WORKSHOP WITH PROCREATE",
+      es: "TALLER DE DIBUJO DIGITAL CON PROCREATE DE VERANO",
+      ca: "TALLER DE DIBUIX DIGITAL AMB PROCREATE D'ESTIU",
     },
     subtitle: {
       en: "Introduction to Concept Art",
@@ -315,9 +319,9 @@ export const COURSES: Course[] = [
       {
         name: { en: "GROUP A", es: "GRUPO A", ca: "GRUP A" },
         period: {
-          en: "24 June – 12 August",
-          es: "24 de Junio – 12 de Agosto",
-          ca: "24 de Juny – 12 d'Agost",
+          en: "1 July – 19 August",
+          es: "1 de Julio – 19 de Agosto",
+          ca: "1 de Juliol – 19 d'Agost",
         },
         schedule: {
           en: "Mondays 18:30–20:30h",
@@ -328,9 +332,9 @@ export const COURSES: Course[] = [
       {
         name: { en: "GROUP B", es: "GRUPO B", ca: "GRUP B" },
         period: {
-          en: "27 June – 15 August",
-          es: "27 de Junio – 15 de Agosto",
-          ca: "27 de Juny – 15 d'Agost",
+          en: "1 July – 22 August",
+          es: "1 de Julio – 22 de Agosto",
+          ca: "1 de Juliol – 22 d'Agost",
         },
         schedule: {
           en: "Tuesdays 18:30–20:30h",
@@ -416,6 +420,103 @@ export const COURSES: Course[] = [
         en: "Visual artist and active Concept artist with professional experience in creative projects and artistic training.",
         es: "Artista visual y Concept artist en activo con experiencia profesional en proyectos creativos y formación artística.",
         ca: "Artista visual i Concept artist en actiu amb experiència professional en projectes creatius i formació artística.",
+      },
+    },
+    location: "Carrer Canalejas, 3, Sants, Barcelona",
+    web: "natatelevision.com",
+    contact: "hi@natatelevision.com",
+  },
+  {
+    slug: "mentoria-3d",
+    status: "open",
+    courseType: "mentorship",
+    title: {
+      en: "3D MENTORSHIP",
+      es: "MENTORÍA 3D",
+      ca: "MENTORIA 3D",
+    },
+    subtitle: {
+      en: "Animation, VFX, Archviz",
+      es: "Animación, VFX, Archviz",
+      ca: "Animació, VFX, Archviz",
+    },
+    tag: {
+      en: "Permanent Course",
+      es: "Curso permanente",
+      ca: "Curs permanent",
+    },
+    shortDescription: {
+      en: "Personalised 3D mentoring for young people and adults who want to get started or strengthen what they already know — flexible schedule, all year round.",
+      es: "Mentorías personalizadas de 3D para jóvenes y adultos que quieran iniciarse o reforzar lo que ya saben — horario flexible, todo el año.",
+      ca: "Mentories personalitzades de 3D per a joves i adults que vulguin iniciar-se o reforçar el que ja saben — horari flexible, tot l'any.",
+    },
+    description: [
+      {
+        en: "Personalised 3D mentoring for young people and adults who want to get started in this world or strengthen what they already know. Rather than a fixed course, we adapt to what you need at any time of the year with a generalist approach. It's an ideal option whether you're interested in 3D animation and visual effects (VFX), or want to focus on architecture renders (Archviz). You decide what you want to learn and when.",
+        es: "Mentorías personalizadas de 3D dirigidas a jóvenes y adultos que quieran iniciarse en este mundo o reforzar lo que ya saben. En lugar de un curso cerrado, nos adaptamos a lo que necesitas en cada momento del año con un enfoque generalista. Es una opción ideal tanto si te interesa la animación 3D y los efectos visuales (VFX), como si buscas enfocarte en renders para arquitectura (Archviz). Tú decides qué quieres aprender y cuándo.",
+        ca: "Mentories personalitzades de 3D adreçades a joves i adults que vulguin iniciar-se en aquest món o reforçar el que ja saben. En lloc d'un curs tancat, ens adaptem al que necessites en cada moment de l'any amb un enfocament generalista. És una opció ideal tant si t'interessa l'animació 3D i els efectes visuals (VFX), com si busques enfocar-te en renders per a arquitectura (Archviz). Tu decideixes què vols aprendre i quan.",
+      },
+    ],
+    mentoring: {
+      en: "Included in the price, all students have direct access to the instructor outside of class to resolve doubts, request feedback or ask whatever they need. If a student cannot attend a class, it will be recorded and shared so they don't fall behind.",
+      es: "Incluido en el precio, todos los alumnos tienen acceso directo al profesor fuera de clase para resolver dudas, pedir feedback o consultar lo que necesiten. Si algún alumno no puede asistir a una clase, esta será grabada y compartida para que no pierda el ritmo.",
+      ca: "Inclòs en el preu, tots els alumnes tenen accés directe al professor fora de classe per resoldre dubtes, demanar feedback o consultar el que necessitin. Si algun alumne no pot assistir a una classe, aquesta serà gravada i compartida perquè no perdi el ritme.",
+    },
+    scheduleIntro: {
+      en: "Classes are designed to fit your routine, so we coordinate the day and time directly together. Available time blocks:",
+      es: "La idea es que las clases se adapten a tu rutina, por lo que coordinamos el día y la hora directamente entre nosotros. Los bloques disponibles son:",
+      ca: "La idea és que les classes s'adaptin a la teva rutina, per la qual cosa coordinem el dia i l'hora directament entre nosaltres. Els blocs disponibles són:",
+    },
+    scheduleNote: {
+      en: "If you need a slot outside these hours, we can discuss it and see if it's possible to arrange.",
+      es: "Si necesitas un hueco fuera de estos horarios, lo podemos hablar y vemos si es posible cuadrarlo.",
+      ca: "Si necessites un forat fora d'aquests horaris, ho podem parlar i veiem si és possible quadrar-ho.",
+    },
+    details: {
+      format: {
+        en: "In-person or remote",
+        es: "Presencial o remoto",
+        ca: "Presencial o remot",
+      },
+      price: "20€/hora",
+      language: {
+        en: "Catalan or Spanish",
+        es: "Catalán o castellano",
+        ca: "Català o castellà",
+      },
+    },
+    groups: [
+      {
+        name: { en: "WEEKDAYS", es: "ENTRE SEMANA", ca: "ENTRE SETMANA" },
+        period: { en: "", es: "", ca: "" },
+        schedule: {
+          en: "Evenings, 18:30–20:30h",
+          es: "Tardes/noches, de 18:30 a 20:30 h",
+          ca: "Tardes/nits, de 18:30 a 20:30 h",
+        },
+      },
+      {
+        name: { en: "SATURDAYS", es: "SÁBADOS", ca: "DISSABTES" },
+        period: { en: "", es: "", ca: "" },
+        schedule: {
+          en: "Mornings",
+          es: "Por las mañanas",
+          ca: "Al matí",
+        },
+      },
+    ],
+    syllabus: [],
+    equipment: {
+      en: "We have equipped workstations available in the space, but if you feel more comfortable with your own laptop, you're welcome to bring it. If you prefer online classes or working from home, you can work perfectly with your own equipment.",
+      es: "En el espacio disponemos de máquinas equipadas para trabajar, pero si te sientes más cómodo con tu propio portátil, puedes traerlo sin problema. Además, si prefieres hacer las clases de forma online o avanzar desde casa, puedes trabajar perfectamente con tu propio equipo.",
+      ca: "A l'espai disposem de màquines equipades per treballar, però si et sents més còmode amb el teu propi portàtil, pots portar-lo sense problema. A més, si prefereixes fer les classes de forma online o avançar des de casa, pots treballar perfectament amb el teu propi equip.",
+    },
+    instructor: {
+      name: "Roger Piñol",
+      bio: {
+        en: "Active VFX and 3D artist with experience in real productions.",
+        es: "Artista de VFX y 3D en activo con experiencia en producciones reales.",
+        ca: "Artista de VFX i 3D en actiu amb experiència en produccions reals.",
       },
     },
     location: "Carrer Canalejas, 3, Sants, Barcelona",
