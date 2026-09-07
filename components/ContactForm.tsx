@@ -31,7 +31,7 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="border-t border-neutral-800 px-8 md:px-14 py-14 bg-neutral-950">
+    <div id="contact" className="border-t border-neutral-800 px-8 md:px-14 py-14 bg-neutral-950">
       <p className="text-xs uppercase tracking-widest text-neutral-500 mb-10">
         {f.title}
       </p>

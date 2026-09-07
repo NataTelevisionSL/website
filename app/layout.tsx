@@ -4,33 +4,33 @@ import type { Metadata } from "next";
 import Nav from "@/components/Nav";
 import IntroSplash from "@/components/IntroSplash";
 import { LanguageProvider } from "@/contexts/LanguageContext";
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://natatelevision.com";
-const titleDefault = "Nata.tv | Creative Production, Post-Production and Animation Studio";
-const description =
-  "Nata Television (nata.tv) is a Barcelona-based creative studio specialising in film production, VFX, 3D animation, post-production, color grading, motion design and virtual production.";
+import {
+  DEFAULT_DESCRIPTION,
+  DEFAULT_TITLE,
+  SITE_NAME,
+  SITE_URL,
+  organizationJsonLd,
+} from "@/lib/seo";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: titleDefault,
+    default: DEFAULT_TITLE,
     template: "%s — Nata.tv",
   },
-  description,
-  alternates: { canonical: "/" },
+  description: DEFAULT_DESCRIPTION,
   robots: { index: true, follow: true },
   openGraph: {
     type: "website",
-    url: "/",
-    siteName: "Nata Television",
-    title: titleDefault,
-    description,
-    images: [{ url: "/img/og.jpg", width: 1200, height: 630, alt: "Nata Television" }],
+    siteName: SITE_NAME,
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    images: [{ url: "/img/og.jpg", width: 1200, height: 630, alt: SITE_NAME }],
   },
   twitter: {
     card: "summary_large_image",
-    title: titleDefault,
-    description,
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
     images: ["/img/og.jpg"],
   },
   icons: {
@@ -40,6 +40,8 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
+  const jsonLd = organizationJsonLd();
+
   return (
     <html lang="en" className="bg-black text-neutral-200">
       <head>
@@ -51,6 +53,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <link rel="preconnect" href="https://skyfire.vimeocdn.com" />
         <link rel="dns-prefetch" href="https://vimeo.com" />
         <link rel="dns-prefetch" href="https://vimeocdn.com" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body className="antialiased">
         <LanguageProvider>

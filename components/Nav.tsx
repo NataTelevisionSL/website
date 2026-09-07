@@ -1,8 +1,7 @@
 "use client";
-import Link from "next/link";
 import Image from "next/image";
 import { useLang } from "@/contexts/LanguageContext";
-import { Lang } from "@/data/translations";
+import SectionLink from "@/components/SectionLink";
 
 export default function Nav() {
   const { lang, setLang, t } = useLang();
@@ -18,13 +17,14 @@ export default function Nav() {
       <div className="fixed top-0 left-0 right-0 h-20 bg-gradient-to-b from-black/60 to-transparent pointer-events-none z-[45]" aria-hidden="true" />
 
       {/* LOGO */}
-      <Link
+      <SectionLink
         href="/"
+        section="top"
         className="fixed left-6 top-6 z-[50] hover:opacity-90 transition"
         aria-label="Home"
       >
         <Image src="/svg/logo.svg" alt="Nata TV" width={140} height={40} />
-      </Link>
+      </SectionLink>
 
       {/* ACADEMIA NAV — hidden, uncomment to restore
       <Link
@@ -52,23 +52,25 @@ export default function Nav() {
             </button>
           ))}
         </div>
-        <Link
-          href="/#studio"
+        <SectionLink
+          href="/studio"
+          section="studio"
           className="hover:opacity-90 transition"
           aria-label="Studio"
         >
           <Image src="/svg/strawberry.svg" alt="mark" width={40} height={40} />
-        </Link>
+        </SectionLink>
       </div>
 
       {/* COPYRIGHT */}
       <div className="fixed bottom-5 right-6 z-[50] flex items-center gap-3 text-xs uppercase tracking-wide">
-        <Link
+        <SectionLink
           href="/"
+          section="top"
           className="opacity-80 text-rose-600 font-bold hover:opacity-100 transition md:text-sm"
         >
           NATA TELEVISION ©
-        </Link>
+        </SectionLink>
       </div>
     </>
   );
