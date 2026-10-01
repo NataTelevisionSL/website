@@ -10,12 +10,36 @@ export type Work = {
 
 export const WORKS: Work[] = [
   {
+    id: 6,
+    title: "OAKLEY - Artifacts from future",
+    year: 2026,
+    category: "VFX · Codea",
+    tag: "#VFX",
+    description: `Client: Codea. VFX.
+        Producer:
+        Noé Delaye,
+        Art Director:
+        Júlia Bosch,
+        3D Generalist:
+        Roger Piñol,
+        Noé Delaye.
+        `,
+    vimeoId: "1231962341",
+  },
+  {
     id: 5,
     title: "TELECINCO - Gaudí 100 aniversario",
     year: 2026,
     category: "POST-PRODUCTION · TELECINCO",
     tag: "#VFX",
-    description: ``,
+    description: `Producer:
+        Noé Delaye,
+        Lead Compositor:
+        Carlos Yau,
+        Compositors:
+        Noé Delaye,
+        Dalva Gonçalves.
+        `,
     vimeoId: "1201399177",
   },
   {
