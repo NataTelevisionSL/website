@@ -32,7 +32,8 @@ export const WORKS: Work[] = [
     year: 2026,
     category: "POST-PRODUCTION · TELECINCO",
     tag: "#VFX",
-    description: `Producer:
+    description: `Client: Telecinco - MR Factory.
+        Producer:
         Noé Delaye,
         Lead Compositor:
         Carlos Yau,

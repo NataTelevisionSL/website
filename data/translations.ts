@@ -45,7 +45,7 @@ export const translations = {
         "We believe great work starts with people. Whatever your vision or budget, we work alongside you to find the right creative solution.",
       services: "SERVICES",
       servicesList:
-        "Commercials, Film, Music Videos, Creative Studio, Production, Service Production, Post-Production, VFX, VFX supervision, 3d animation, 2d animation, Color grading, Editing, Filmmakers, Art Direction, Motion Design, Interactive Arts, Visualizers, Pitch design, Virtual Production.",
+        "Commercials, Film, Music Videos, Creative Studio, Production, Service Production, Post-Production, VFX, On-set VFX supervision, 3d animation, 2d animation, Color grading, Editing, Filmmakers, Art Direction, Motion Design, Interactive Arts, Visualizers, Pitch design, Virtual Production.",
       clients: "CLIENTS",
       clientsLabel: "Clients & collaborators",
       close: "✕ close",
@@ -125,7 +125,7 @@ export const translations = {
         "Creemos que el buen trabajo empieza por las personas. Sea cual sea tu visión o presupuesto, trabajamos contigo para encontrar la solución creativa adecuada.",
       services: "SERVICIOS",
       servicesList:
-        "Publicidad, Cine, Videoclips, Estudio Creativo, Producción, Producción de Servicio, Post-Producción, VFX, Supervisión VFX, Animación 3D, Animación 2D, Colorización, Montaje, Filmmakers, Dirección de Arte, Motion Design, Artes Interactivas, Visualizadores, Diseño de Pitch, Producción Virtual.",
+        "Publicidad, Cine, Videoclips, Estudio Creativo, Producción, Producción de Servicio, Post-Producción, VFX, Supervisión on-set de VFX, Animación 3D, Animación 2D, Colorización, Montaje, Filmmakers, Dirección de Arte, Motion Design, Artes Interactivas, Visualizadores, Diseño de Pitch, Producción Virtual.",
       clients: "CLIENTES",
       clientsLabel: "Clientes & colaboradores",
       close: "✕ cerrar",
@@ -205,7 +205,7 @@ export const translations = {
         "Creiem que el bon treball comença per les persones. Sigui quina sigui la teva visió o pressupost, treballem al teu costat per trobar la solució creativa adequada.",
       services: "SERVEIS",
       servicesList:
-        "Publicitat, Cinema, Videoclips, Estudi Creatiu, Producció, Producció de Servei, Post-Producció, VFX, Supervisió VFX, Animació 3D, Animació 2D, Colorització, Muntatge, Filmmakers, Direcció d'Art, Motion Design, Arts Interactives, Visualitzadors, Disseny de Pitch, Producció Virtual.",
+        "Publicitat, Cinema, Videoclips, Estudi Creatiu, Producció, Producció de Servei, Post-Producció, VFX, Supervisió on-set de VFX, Animació 3D, Animació 2D, Colorització, Muntatge, Filmmakers, Direcció d'Art, Motion Design, Arts Interactives, Visualitzadors, Disseny de Pitch, Producció Virtual.",
       clients: "CLIENTS",
       clientsLabel: "Clients & col·laboradors",
       close: "✕ tancar",

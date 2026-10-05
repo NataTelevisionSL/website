@@ -52,26 +52,31 @@ export default function IntroSplash() {
   useEffect(() => {
     if (!show) return;
 
+    // Wait for what's on screen (hero), not every Vimeo iframe further down.
     const MIN_MS = 2500;
+    const MAX_MS = 4000;
     const start = Date.now();
+    let dismissed = false;
+    let fadeTimer: ReturnType<typeof setTimeout> | undefined;
+    let hideTimer: ReturnType<typeof setTimeout> | undefined;
 
     function dismiss() {
-      const elapsed = Date.now() - start;
-      const remaining = Math.max(0, MIN_MS - elapsed);
-      setTimeout(() => setFading(true), remaining);
-      setTimeout(() => setShow(false), remaining + 800);
+      if (dismissed) return;
+      dismissed = true;
+      const remaining = Math.max(0, MIN_MS - (Date.now() - start));
+      fadeTimer = setTimeout(() => setFading(true), remaining);
+      hideTimer = setTimeout(() => setShow(false), remaining + 800);
     }
 
-    if (document.readyState === "complete") {
-      dismiss();
-    } else {
-      window.addEventListener("load", dismiss, { once: true });
-      const safety = setTimeout(dismiss, 10000);
-      return () => {
-        window.removeEventListener("load", dismiss);
-        clearTimeout(safety);
-      };
-    }
+    window.addEventListener("nata:hero-ready", dismiss);
+    const safety = setTimeout(dismiss, MAX_MS);
+
+    return () => {
+      window.removeEventListener("nata:hero-ready", dismiss);
+      clearTimeout(safety);
+      clearTimeout(fadeTimer);
+      clearTimeout(hideTimer);
+    };
   }, [show]);
 
   if (!show) return null;

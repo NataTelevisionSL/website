@@ -15,16 +15,25 @@ export default function VimeoBackground({ id, poster }: Props) {
     if (!iframeRef.current) return;
     const player = new Player(iframeRef.current);
 
-    let grace: any;
-    let fallback: any;
+    let grace: ReturnType<typeof setTimeout>;
+    let fallback: ReturnType<typeof setTimeout>;
+    let signaled = false;
+
+    const markReady = () => {
+      setReady(true);
+      if (signaled) return;
+      signaled = true;
+      // Tell IntroSplash the above-the-fold hero is ready (don't wait for works below).
+      window.dispatchEvent(new Event("nata:hero-ready"));
+    };
 
     // Quan el vídeo realment comença
     player.on("play", () => {
-      grace = setTimeout(() => setReady(true), 200); // petit marge pel primer frame
+      grace = setTimeout(markReady, 200); // petit marge pel primer frame
     });
 
     // Fallback per si "play" no arriba (bloquejos, etc.)
-    fallback = setTimeout(() => setReady(true), 5000);
+    fallback = setTimeout(markReady, 5000);
 
     return () => {
       clearTimeout(grace);

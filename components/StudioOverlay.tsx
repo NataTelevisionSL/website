@@ -64,7 +64,7 @@ export default function StudioOverlay({ onClose }: { onClose: () => void }) {
                   Service Production,
                   Post-Production,
                   VFX,
-                  VFX supervision,
+                  On-set VFX supervision,
                   3d animation,
                   2d animation,
                   Color grading,
