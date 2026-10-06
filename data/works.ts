@@ -31,11 +31,11 @@ export const WORKS: Work[] = [
     title: "MORITZ - La Mercè 2026",
     year: 2026,
     category: "DESIGN · Grupo Agora",
-    tag: "#Layout",
-    description: `Client: Grupo Agora. Layout of 100 posters celebrating different Mercès of Barcelona, with illustrations by Ayla Madison across the city.
+    tag: "#Maquetación · #aylamadison",
+    description: `Client: Grupo Agora. Maquetación de 100 carteles celebrando diferentes Mercès de Barcelona, con ilustraciones de Ayla Madison por toda la ciudad.
         Illustration:
         Ayla Madison,
-        Layout:
+        Maquetación:
         Roger Piñol,
         Júlia Bosch.
         `,
