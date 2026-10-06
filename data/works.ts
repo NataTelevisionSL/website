@@ -27,6 +27,21 @@ export const WORKS: Work[] = [
     vimeoId: "1231962341",
   },
   {
+    id: 7,
+    title: "MORITZ - La Mercè 2026",
+    year: 2026,
+    category: "DESIGN · Grupo Agora",
+    tag: "#Layout",
+    description: `Client: Grupo Agora. Layout of 100 posters celebrating different Mercès of Barcelona, with illustrations by Ayla Madison across the city.
+        Illustration:
+        Ayla Madison,
+        Layout:
+        Roger Piñol,
+        Júlia Bosch.
+        `,
+    vimeoId: "1233354546",
+  },
+  {
     id: 5,
     title: "TELECINCO - Gaudí 100 aniversario",
     year: 2026,
