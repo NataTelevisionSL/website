@@ -3,11 +3,9 @@ import { useEffect, useRef, useState } from "react";
 import Player from "@vimeo/player";
 import { Work } from "@/data/works";
 import { useLang } from "@/contexts/LanguageContext";
-import { useCookieConsent } from "@/contexts/CookieConsentContext";
 
 export default function WorkCard({ work, large }: { work: Work; large?: boolean }) {
   const { t } = useLang();
-  const { mediaAllowed, accept } = useCookieConsent();
   const [thumb, setThumb] = useState<string | null>(null);
   const [ready, setReady] = useState(false);
   const [open, setOpen] = useState(false);
@@ -21,10 +19,6 @@ export default function WorkCard({ work, large }: { work: Work; large?: boolean 
   }, [work.vimeoId]);
 
   useEffect(() => {
-    if (!mediaAllowed) {
-      setReady(false);
-      return;
-    }
     if (!iframeRef.current) return;
     const player = new Player(iframeRef.current);
     let grace: ReturnType<typeof setTimeout>;
@@ -40,9 +34,8 @@ export default function WorkCard({ work, large }: { work: Work; large?: boolean 
       clearTimeout(fallback);
       player.destroy();
     };
-  }, [mediaAllowed, work.vimeoId]);
+  }, [work.vimeoId]);
 
-  // Lock body scroll when modal open
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
@@ -50,29 +43,25 @@ export default function WorkCard({ work, large }: { work: Work; large?: boolean 
 
   return (
     <>
-      {/* Video card */}
       <button
         onClick={() => setOpen(true)}
         className={`relative w-full overflow-hidden bg-black group cursor-pointer ${
           large ? "aspect-[16/10] md:aspect-[16/7]" : "aspect-[16/10]"
         }`}
       >
-        {mediaAllowed && (
-          <iframe
-            ref={iframeRef}
-            src={`https://player.vimeo.com/video/${work.vimeoId}?background=1&autoplay=1&loop=1&muted=1&dnt=1`}
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowFullScreen
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[112%] aspect-video pointer-events-none"
-            title={work.title}
-          />
-        )}
+        <iframe
+          ref={iframeRef}
+          src={`https://player.vimeo.com/video/${work.vimeoId}?background=1&autoplay=1&loop=1&muted=1&dnt=1`}
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[112%] aspect-video pointer-events-none"
+          title={work.title}
+        />
 
-        {/* Poster — fades out once video is playing */}
         {thumb && (
           <div
             className={`absolute inset-0 transition-opacity duration-700 ${
-              mediaAllowed && ready ? "opacity-0 pointer-events-none" : "opacity-100"
+              ready ? "opacity-0 pointer-events-none" : "opacity-100"
             }`}
           >
             <img
@@ -103,7 +92,6 @@ export default function WorkCard({ work, large }: { work: Work; large?: boolean 
         </div>
       </button>
 
-      {/* Modal */}
       {open && (
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10 bg-black/80 backdrop-blur-sm"
@@ -121,31 +109,13 @@ export default function WorkCard({ work, large }: { work: Work; large?: boolean 
             </button>
 
             <div className="relative aspect-[16/9] w-full bg-black">
-              {mediaAllowed ? (
-                <iframe
-                  src={`https://player.vimeo.com/video/${work.vimeoId}?autoplay=1&loop=1&muted=1&controls=0&background=0&dnt=1&title=0&byline=0&portrait=0`}
-                  allow="autoplay; fullscreen; picture-in-picture"
-                  allowFullScreen
-                  className="absolute inset-0 w-full h-full"
-                  title={work.title}
-                />
-              ) : (
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6 text-center">
-                  {thumb && (
-                    <img src={thumb} alt="" className="absolute inset-0 w-full h-full object-cover opacity-40" />
-                  )}
-                  <p className="relative text-sm text-neutral-300 max-w-sm">
-                    {t.cookies.body}
-                  </p>
-                  <button
-                    type="button"
-                    onClick={accept}
-                    className="relative border border-white text-white text-xs uppercase tracking-widest px-5 py-2.5 hover:bg-white hover:text-black transition"
-                  >
-                    {t.cookies.accept}
-                  </button>
-                </div>
-              )}
+              <iframe
+                src={`https://player.vimeo.com/video/${work.vimeoId}?autoplay=1&loop=1&muted=1&controls=0&background=0&dnt=1&title=0&byline=0&portrait=0`}
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowFullScreen
+                className="absolute inset-0 w-full h-full"
+                title={work.title}
+              />
             </div>
 
             <div className="px-8 py-8 border-t border-neutral-800">

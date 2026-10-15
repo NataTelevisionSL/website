@@ -93,10 +93,10 @@ export const translations = {
     },
     cookies: {
       title: "Cookies",
-      body: "We use essential preferences and, if you accept, load Vimeo embeds to play our videos. You can change this anytime.",
+      body: "We use essential preferences (language) and Vimeo embeds to show our work. Vimeo may set its own cookies. Videos always play.",
       policyLink: "Cookie policy",
-      accept: "Accept",
-      reject: "Reject optional",
+      accept: "Got it",
+      reject: "Close",
     },
   },
   es: {
@@ -191,10 +191,10 @@ export const translations = {
     },
     cookies: {
       title: "Cookies",
-      body: "Usamos preferencias esenciales y, si aceptas, cargamos embeds de Vimeo para reproducir nuestros vídeos. Puedes cambiarlo cuando quieras.",
+      body: "Usamos preferencias esenciales (idioma) y embeds de Vimeo para mostrar nuestros trabajos. Vimeo puede instalar sus propias cookies. Los vídeos se reproducen siempre.",
       policyLink: "Política de cookies",
-      accept: "Aceptar",
-      reject: "Rechazar opcionales",
+      accept: "Entendido",
+      reject: "Cerrar",
     },
   },
   ca: {
@@ -289,10 +289,10 @@ export const translations = {
     },
     cookies: {
       title: "Galetes",
-      body: "Fem servir preferències essencials i, si acceptes, carreguem embeds de Vimeo per reproduir els nostres vídeos. Pots canviar-ho quan vulguis.",
+      body: "Fem servir preferències essencials (idioma) i embeds de Vimeo per mostrar els nostres treballs. Vimeo pot instal·lar les seves pròpies galetes. Els vídeos es reprodueixen sempre.",
       policyLink: "Política de galetes",
-      accept: "Acceptar",
-      reject: "Rebutjar opcionals",
+      accept: "Entesos",
+      reject: "Tancar",
     },
   },
 } as const;

@@ -1,14 +1,12 @@
 "use client";
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 
-const STORAGE_KEY = "nata-cookie-consent";
+const LEGACY_STORAGE_KEY = "nata-cookie-consent";
 
-export type CookieConsentValue = "accepted" | "rejected";
-type ConsentState = CookieConsentValue | "pending";
+type ConsentState = "pending" | "dismissed";
 
 type CookieConsentContextType = {
   consent: ConsentState;
-  mediaAllowed: boolean;
   accept: () => void;
   reject: () => void;
   openSettings: () => void;
@@ -17,7 +15,6 @@ type CookieConsentContextType = {
 
 const CookieConsentContext = createContext<CookieConsentContextType>({
   consent: "pending",
-  mediaAllowed: false,
   accept: () => {},
   reject: () => {},
   openSettings: () => {},
@@ -29,20 +26,15 @@ const POST_SPLASH_DELAY_MS = 1800;
 export function CookieConsentProvider({ children }: { children: ReactNode }) {
   const [consent, setConsent] = useState<ConsentState>("pending");
   const [settingsOpen, setSettingsOpen] = useState(false);
-  const [hydrated, setHydrated] = useState(false);
   const [autoPromptReady, setAutoPromptReady] = useState(false);
 
+  // Clear any previously saved choice so the notice can appear on each visit.
   useEffect(() => {
     try {
-      const stored = localStorage.getItem(STORAGE_KEY) as CookieConsentValue | null;
-      if (stored === "accepted" || stored === "rejected") {
-        setConsent(stored);
-      }
+      localStorage.removeItem(LEGACY_STORAGE_KEY);
     } catch {}
-    setHydrated(true);
   }, []);
 
-  // Show the first-visit banner only after the intro splash finishes + a short beat.
   useEffect(() => {
     let delayTimer: ReturnType<typeof setTimeout> | undefined;
 
@@ -57,25 +49,19 @@ export function CookieConsentProvider({ children }: { children: ReactNode }) {
     };
   }, []);
 
-  const persist = (value: CookieConsentValue) => {
-    try {
-      localStorage.setItem(STORAGE_KEY, value);
-    } catch {}
-    setConsent(value);
+  const dismiss = () => {
+    setConsent("dismissed");
     setSettingsOpen(false);
   };
 
-  // Avoid flash: treat as pending until we read storage
-  const effective: ConsentState = hydrated ? consent : "pending";
-  const autoShow = hydrated && effective === "pending" && autoPromptReady;
+  const autoShow = consent === "pending" && autoPromptReady;
 
   return (
     <CookieConsentContext.Provider
       value={{
-        consent: effective,
-        mediaAllowed: effective === "accepted",
-        accept: () => persist("accepted"),
-        reject: () => persist("rejected"),
+        consent,
+        accept: dismiss,
+        reject: dismiss,
         openSettings: () => setSettingsOpen(true),
         settingsOpen: settingsOpen || autoShow,
       }}
