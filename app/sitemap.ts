@@ -10,6 +10,9 @@ export default function sitemap() {
     { path: "/studio", priority: 0.9 },
     { path: "/contact", priority: 0.8 },
     { path: "/academia", priority: 0.8 },
+    { path: "/legal/aviso-legal", priority: 0.3 },
+    { path: "/legal/privacidad", priority: 0.3 },
+    { path: "/legal/cookies", priority: 0.3 },
   ];
 
   const courseRoutes = COURSES.map((c) => ({

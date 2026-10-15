@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Player from "@vimeo/player";
+import { useCookieConsent } from "@/contexts/CookieConsentContext";
 
 type Props = {
   id: string;           // ID de Vimeo (p. ex. "1117685610")
@@ -10,9 +11,17 @@ type Props = {
 export default function VimeoBackground({ id, poster }: Props) {
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
   const [ready, setReady] = useState(false);
+  const { mediaAllowed } = useCookieConsent();
+
+  // If media is blocked, poster is the above-the-fold content — unblock splash.
+  useEffect(() => {
+    if (mediaAllowed) return;
+    setReady(false);
+    window.dispatchEvent(new Event("nata:hero-ready"));
+  }, [mediaAllowed]);
 
   useEffect(() => {
-    if (!iframeRef.current) return;
+    if (!mediaAllowed || !iframeRef.current) return;
     const player = new Player(iframeRef.current);
 
     let grace: ReturnType<typeof setTimeout>;
@@ -23,16 +32,13 @@ export default function VimeoBackground({ id, poster }: Props) {
       setReady(true);
       if (signaled) return;
       signaled = true;
-      // Tell IntroSplash the above-the-fold hero is ready (don't wait for works below).
       window.dispatchEvent(new Event("nata:hero-ready"));
     };
 
-    // Quan el vídeo realment comença
     player.on("play", () => {
-      grace = setTimeout(markReady, 200); // petit marge pel primer frame
+      grace = setTimeout(markReady, 200);
     });
 
-    // Fallback per si "play" no arriba (bloquejos, etc.)
     fallback = setTimeout(markReady, 5000);
 
     return () => {
@@ -40,27 +46,28 @@ export default function VimeoBackground({ id, poster }: Props) {
       clearTimeout(fallback);
       player.destroy();
     };
-  }, []);
+  }, [mediaAllowed, id]);
 
   return (
     <div className="vimeo-cover relative bg-black">
-      <iframe
-        ref={iframeRef}
-        src={`https://player.vimeo.com/video/${id}?background=1&autoplay=1&loop=1&muted=1&dnt=1&autopause=0&quality=auto`}
-        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-        referrerPolicy="strict-origin-when-cross-origin"
-        allowFullScreen
-        loading="eager"
-        title="Background video"
-      />
+      {mediaAllowed && (
+        <iframe
+          ref={iframeRef}
+          src={`https://player.vimeo.com/video/${id}?background=1&autoplay=1&loop=1&muted=1&dnt=1&autopause=0&quality=auto`}
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+          loading="eager"
+          title="Background video"
+        />
+      )}
 
-      {/* Poster local fins que comença el vídeo */}
       {!!poster && (
         <div
           className={`absolute inset-0 transition-opacity duration-400 ${
-            ready ? "opacity-0 pointer-events-none" : "opacity-100"
+            mediaAllowed && ready ? "opacity-0 pointer-events-none" : "opacity-100"
           }`}
-          aria-hidden={ready}
+          aria-hidden={mediaAllowed && ready}
         >
           <img
             src={poster}

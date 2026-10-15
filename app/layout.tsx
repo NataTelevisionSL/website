@@ -3,7 +3,9 @@ import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import Nav from "@/components/Nav";
 import IntroSplash from "@/components/IntroSplash";
+import CookieBanner from "@/components/CookieBanner";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import { CookieConsentProvider } from "@/contexts/CookieConsentContext";
 import {
   DEFAULT_DESCRIPTION,
   DEFAULT_TITLE,
@@ -60,9 +62,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body className="antialiased">
         <LanguageProvider>
-          <IntroSplash />
-          {children}
-          <Nav />
+          <CookieConsentProvider>
+            <IntroSplash />
+            {children}
+            <Nav />
+            <CookieBanner />
+          </CookieConsentProvider>
         </LanguageProvider>
       </body>
     </html>

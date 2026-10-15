@@ -1,14 +1,22 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 import { useLang } from "@/contexts/LanguageContext";
 
 export default function ContactForm() {
   const { t } = useLang();
   const f = t.studio.form;
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
+  const [privacyError, setPrivacyError] = useState(false);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (!privacyAccepted) {
+      setPrivacyError(true);
+      return;
+    }
+    setPrivacyError(false);
     setStatus("sending");
     const form = e.currentTarget;
     const data = new FormData(form);
@@ -22,6 +30,7 @@ export default function ContactForm() {
       if (res.ok) {
         setStatus("sent");
         form.reset();
+        setPrivacyAccepted(false);
       } else {
         setStatus("error");
       }
@@ -92,6 +101,32 @@ export default function ContactForm() {
           />
         </label>
 
+        {/* Privacy consent */}
+        <label className="flex items-start gap-3 cursor-pointer">
+          <input
+            type="checkbox"
+            checked={privacyAccepted}
+            onChange={(e) => {
+              setPrivacyAccepted(e.target.checked);
+              if (e.target.checked) setPrivacyError(false);
+            }}
+            className="mt-0.5 accent-rose-500"
+          />
+          <span className="text-xs text-neutral-400 leading-relaxed">
+            {f.privacyConsent}{" "}
+            <Link
+              href="/legal/privacidad"
+              className="text-rose-400 hover:underline underline-offset-4"
+            >
+              {f.privacyLink}
+            </Link>
+            .
+          </span>
+        </label>
+        {privacyError && (
+          <p className="text-xs text-rose-400 -mt-6">{f.privacyRequired}</p>
+        )}
+
         {/* Submit */}
         <div>
           <button
@@ -107,7 +142,7 @@ export default function ContactForm() {
         </div>
       </form>
       <p className="mt-10 text-xs text-neutral-600 leading-relaxed">
-        {f.fallback.split(/(hi@natatelevision\.com|\+619 92 63 11)/).map((part, i) => {
+        {f.fallback.split(/(hi@natatelevision\.com|\+34 619 92 63 11)/).map((part, i) => {
           if (part === "hi@natatelevision.com") {
             return (
               <a key={i} href="mailto:hi@natatelevision.com"
@@ -117,12 +152,12 @@ export default function ContactForm() {
               </a>
             );
           }
-          if (part === "+619 92 63 11") {
+          if (part === "+34 619 92 63 11") {
             return (
-              <a key={i} href="tel:+619926311"
+              <a key={i} href="tel:+34619926311"
                 className="text-white font-semibold text-sm tracking-wide hover:opacity-80 transition"
               >
-                +619 92 63 11
+                +34 619 92 63 11
               </a>
             );
           }

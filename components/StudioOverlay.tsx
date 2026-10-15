@@ -150,7 +150,7 @@ export default function StudioOverlay({ onClose }: { onClose: () => void }) {
             <div>
               <h2 className="font-semibold mt-8">CLIENTS</h2>
               <p className="opacity-80">
-                For any inquiries or further information you can email us at admin@natatelevision.com, +619 92 63 11 (Noé Delaye), or visit us at Carrer Canalejas 3, Barcelona. We offer a commission for successful project referrals.              
+                For any inquiries or further information you can email us at admin@natatelevision.com, +34 619 92 63 11 (Noé Delaye), or visit us at Carrer Canalejas 3, Barcelona. We offer a commission for successful project referrals.              
               </p>
             </div>
           </div>

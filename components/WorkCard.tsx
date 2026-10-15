@@ -3,9 +3,11 @@ import { useEffect, useRef, useState } from "react";
 import Player from "@vimeo/player";
 import { Work } from "@/data/works";
 import { useLang } from "@/contexts/LanguageContext";
+import { useCookieConsent } from "@/contexts/CookieConsentContext";
 
 export default function WorkCard({ work, large }: { work: Work; large?: boolean }) {
   const { t } = useLang();
+  const { mediaAllowed, accept } = useCookieConsent();
   const [thumb, setThumb] = useState<string | null>(null);
   const [ready, setReady] = useState(false);
   const [open, setOpen] = useState(false);
@@ -19,6 +21,10 @@ export default function WorkCard({ work, large }: { work: Work; large?: boolean 
   }, [work.vimeoId]);
 
   useEffect(() => {
+    if (!mediaAllowed) {
+      setReady(false);
+      return;
+    }
     if (!iframeRef.current) return;
     const player = new Player(iframeRef.current);
     let grace: ReturnType<typeof setTimeout>;
@@ -34,7 +40,7 @@ export default function WorkCard({ work, large }: { work: Work; large?: boolean 
       clearTimeout(fallback);
       player.destroy();
     };
-  }, []);
+  }, [mediaAllowed, work.vimeoId]);
 
   // Lock body scroll when modal open
   useEffect(() => {
@@ -51,21 +57,22 @@ export default function WorkCard({ work, large }: { work: Work; large?: boolean 
           large ? "aspect-[16/10] md:aspect-[16/7]" : "aspect-[16/10]"
         }`}
       >
-        {/* Background video — pointer-events-none so clicks pass through */}
-        <iframe
-          ref={iframeRef}
-          src={`https://player.vimeo.com/video/${work.vimeoId}?background=1&autoplay=1&loop=1&muted=1&dnt=1`}
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowFullScreen
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[112%] aspect-video pointer-events-none"
-          title={work.title}
-        />
+        {mediaAllowed && (
+          <iframe
+            ref={iframeRef}
+            src={`https://player.vimeo.com/video/${work.vimeoId}?background=1&autoplay=1&loop=1&muted=1&dnt=1`}
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowFullScreen
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[112%] aspect-video pointer-events-none"
+            title={work.title}
+          />
+        )}
 
         {/* Poster — fades out once video is playing */}
         {thumb && (
           <div
             className={`absolute inset-0 transition-opacity duration-700 ${
-              ready ? "opacity-0 pointer-events-none" : "opacity-100"
+              mediaAllowed && ready ? "opacity-0 pointer-events-none" : "opacity-100"
             }`}
           >
             <img
@@ -106,7 +113,6 @@ export default function WorkCard({ work, large }: { work: Work; large?: boolean 
             className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-black border border-neutral-800"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close button */}
             <button
               onClick={() => setOpen(false)}
               className="absolute top-4 right-4 z-10 text-neutral-400 hover:text-white text-xs uppercase tracking-widest transition"
@@ -114,18 +120,34 @@ export default function WorkCard({ work, large }: { work: Work; large?: boolean 
               {t.studio.close}
             </button>
 
-            {/* Video — no controls, muted, autoplay */}
             <div className="relative aspect-[16/9] w-full bg-black">
-              <iframe
-                src={`https://player.vimeo.com/video/${work.vimeoId}?autoplay=1&loop=1&muted=1&controls=0&background=0&dnt=1&title=0&byline=0&portrait=0`}
-                allow="autoplay; fullscreen; picture-in-picture"
-                allowFullScreen
-                className="absolute inset-0 w-full h-full"
-                title={work.title}
-              />
+              {mediaAllowed ? (
+                <iframe
+                  src={`https://player.vimeo.com/video/${work.vimeoId}?autoplay=1&loop=1&muted=1&controls=0&background=0&dnt=1&title=0&byline=0&portrait=0`}
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  allowFullScreen
+                  className="absolute inset-0 w-full h-full"
+                  title={work.title}
+                />
+              ) : (
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6 text-center">
+                  {thumb && (
+                    <img src={thumb} alt="" className="absolute inset-0 w-full h-full object-cover opacity-40" />
+                  )}
+                  <p className="relative text-sm text-neutral-300 max-w-sm">
+                    {t.cookies.body}
+                  </p>
+                  <button
+                    type="button"
+                    onClick={accept}
+                    className="relative border border-white text-white text-xs uppercase tracking-widest px-5 py-2.5 hover:bg-white hover:text-black transition"
+                  >
+                    {t.cookies.accept}
+                  </button>
+                </div>
+              )}
             </div>
 
-            {/* Info */}
             <div className="px-8 py-8 border-t border-neutral-800">
               <div className="flex flex-wrap gap-x-8 gap-y-1 mb-4 text-[10px] uppercase tracking-widest text-neutral-500">
                 {work.category && <span>{work.category}</span>}
@@ -145,4 +167,3 @@ export default function WorkCard({ work, large }: { work: Work; large?: boolean 
     </>
   );
 }
-

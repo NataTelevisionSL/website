@@ -1,5 +1,6 @@
 "use client";
 import { useEffect } from "react";
+import Link from "next/link";
 import VimeoBackground from "@/components/VimeoBackground";
 import WorkCard from "@/components/WorkCard";
 import ServicesTicker from "@/components/ServicesTicker";
@@ -9,11 +10,13 @@ import SectionLink from "@/components/SectionLink";
 import { WORKS } from "@/data/works";
 import { TEAM } from "@/data/team";
 import { useLang } from "@/contexts/LanguageContext";
+import { useCookieConsent } from "@/contexts/CookieConsentContext";
 
 export type HomeSection = "works" | "studio" | "contact";
 
 export default function HomePage({ initialSection }: { initialSection?: HomeSection }) {
   const { t } = useLang();
+  const { openSettings } = useCookieConsent();
 
   useEffect(() => {
     if (!initialSection) return;
@@ -231,6 +234,25 @@ export default function HomePage({ initialSection }: { initialSection?: HomeSect
             </ul>
           </div>
         </footer>
+
+        <div className="px-8 md:px-14 py-6 flex flex-wrap gap-x-6 gap-y-2 text-[10px] uppercase tracking-widest text-neutral-600 border-b border-neutral-800">
+          <Link href="/legal/aviso-legal" className="hover:text-rose-400 transition">
+            {t.legal.notice}
+          </Link>
+          <Link href="/legal/privacidad" className="hover:text-rose-400 transition">
+            {t.legal.privacy}
+          </Link>
+          <Link href="/legal/cookies" className="hover:text-rose-400 transition">
+            {t.legal.cookies}
+          </Link>
+          <button
+            type="button"
+            onClick={openSettings}
+            className="hover:text-rose-400 transition uppercase tracking-widest"
+          >
+            {t.legal.cookieSettings}
+          </button>
+        </div>
 
       </section>
     </main>
