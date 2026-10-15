@@ -24,10 +24,13 @@ const CookieConsentContext = createContext<CookieConsentContextType>({
   settingsOpen: false,
 });
 
+const POST_SPLASH_DELAY_MS = 1800;
+
 export function CookieConsentProvider({ children }: { children: ReactNode }) {
   const [consent, setConsent] = useState<ConsentState>("pending");
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [hydrated, setHydrated] = useState(false);
+  const [autoPromptReady, setAutoPromptReady] = useState(false);
 
   useEffect(() => {
     try {
@@ -37,6 +40,21 @@ export function CookieConsentProvider({ children }: { children: ReactNode }) {
       }
     } catch {}
     setHydrated(true);
+  }, []);
+
+  // Show the first-visit banner only after the intro splash finishes + a short beat.
+  useEffect(() => {
+    let delayTimer: ReturnType<typeof setTimeout> | undefined;
+
+    function onSplashDone() {
+      delayTimer = setTimeout(() => setAutoPromptReady(true), POST_SPLASH_DELAY_MS);
+    }
+
+    window.addEventListener("nata:splash-done", onSplashDone);
+    return () => {
+      window.removeEventListener("nata:splash-done", onSplashDone);
+      clearTimeout(delayTimer);
+    };
   }, []);
 
   const persist = (value: CookieConsentValue) => {
@@ -49,6 +67,7 @@ export function CookieConsentProvider({ children }: { children: ReactNode }) {
 
   // Avoid flash: treat as pending until we read storage
   const effective: ConsentState = hydrated ? consent : "pending";
+  const autoShow = hydrated && effective === "pending" && autoPromptReady;
 
   return (
     <CookieConsentContext.Provider
@@ -58,7 +77,7 @@ export function CookieConsentProvider({ children }: { children: ReactNode }) {
         accept: () => persist("accepted"),
         reject: () => persist("rejected"),
         openSettings: () => setSettingsOpen(true),
-        settingsOpen: settingsOpen || (hydrated && effective === "pending"),
+        settingsOpen: settingsOpen || autoShow,
       }}
     >
       {children}

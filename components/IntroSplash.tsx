@@ -65,7 +65,10 @@ export default function IntroSplash() {
       dismissed = true;
       const remaining = Math.max(0, MIN_MS - (Date.now() - start));
       fadeTimer = setTimeout(() => setFading(true), remaining);
-      hideTimer = setTimeout(() => setShow(false), remaining + 800);
+      hideTimer = setTimeout(() => {
+        setShow(false);
+        window.dispatchEvent(new Event("nata:splash-done"));
+      }, remaining + 800);
     }
 
     window.addEventListener("nata:hero-ready", dismiss);
