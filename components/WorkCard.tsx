@@ -4,12 +4,30 @@ import Player from "@vimeo/player";
 import { Work } from "@/data/works";
 import { useLang } from "@/contexts/LanguageContext";
 
+/** Desktop with fine pointer — safe to autoplay hover-style previews. */
+function useDesktopPreview() {
+  const [enabled, setEnabled] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(hover: hover) and (pointer: fine) and (min-width: 768px)");
+    const update = () => setEnabled(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+  return enabled;
+}
+
 export default function WorkCard({ work, large }: { work: Work; large?: boolean }) {
   const { t } = useLang();
+  const desktopPreview = useDesktopPreview();
+  const cardRef = useRef<HTMLButtonElement | null>(null);
+  const iframeRef = useRef<HTMLIFrameElement | null>(null);
+  const [inView, setInView] = useState(false);
   const [thumb, setThumb] = useState<string | null>(null);
   const [ready, setReady] = useState(false);
   const [open, setOpen] = useState(false);
-  const iframeRef = useRef<HTMLIFrameElement | null>(null);
+
+  const showPreview = desktopPreview && inView;
 
   useEffect(() => {
     fetch(`/api/vimeo/thumbnail?id=${work.vimeoId}`)
@@ -18,8 +36,25 @@ export default function WorkCard({ work, large }: { work: Work; large?: boolean 
       .catch(() => null);
   }, [work.vimeoId]);
 
+  // Only observe for desktop preview mounts
   useEffect(() => {
+    if (!desktopPreview || !cardRef.current) return;
+    const el = cardRef.current;
+    const obs = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { rootMargin: "200px 0px", threshold: 0.01 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [desktopPreview]);
+
+  useEffect(() => {
+    if (!showPreview) {
+      setReady(false);
+      return;
+    }
     if (!iframeRef.current) return;
+
     const player = new Player(iframeRef.current);
     let grace: ReturnType<typeof setTimeout>;
     let fallback: ReturnType<typeof setTimeout>;
@@ -34,7 +69,7 @@ export default function WorkCard({ work, large }: { work: Work; large?: boolean 
       clearTimeout(fallback);
       player.destroy();
     };
-  }, [work.vimeoId]);
+  }, [showPreview, work.vimeoId]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -44,31 +79,41 @@ export default function WorkCard({ work, large }: { work: Work; large?: boolean 
   return (
     <>
       <button
+        ref={cardRef}
         onClick={() => setOpen(true)}
         className={`relative w-full overflow-hidden bg-black group cursor-pointer ${
           large ? "aspect-[16/10] md:aspect-[16/7]" : "aspect-[16/10]"
         }`}
       >
-        <iframe
-          ref={iframeRef}
-          src={`https://player.vimeo.com/video/${work.vimeoId}?background=1&autoplay=1&loop=1&muted=1&dnt=1`}
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowFullScreen
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[112%] aspect-video pointer-events-none"
-          title={work.title}
-        />
+        {/* Preview video: desktop + in-viewport only — avoids iOS memory crash */}
+        {showPreview && (
+          <iframe
+            ref={iframeRef}
+            src={`https://player.vimeo.com/video/${work.vimeoId}?background=1&autoplay=1&loop=1&muted=1&dnt=1`}
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowFullScreen
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[112%] aspect-video pointer-events-none"
+            title={work.title}
+          />
+        )}
 
-        {thumb && (
+        {(thumb || !showPreview) && (
           <div
             className={`absolute inset-0 transition-opacity duration-700 ${
-              ready ? "opacity-0 pointer-events-none" : "opacity-100"
+              showPreview && ready ? "opacity-0 pointer-events-none" : "opacity-100"
             }`}
           >
-            <img
-              src={thumb}
-              alt={work.title}
-              className="w-full h-full object-cover"
-            />
+            {thumb ? (
+              <img
+                src={thumb}
+                alt={work.title}
+                className="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <div className="w-full h-full bg-neutral-900" />
+            )}
           </div>
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
@@ -94,7 +139,7 @@ export default function WorkCard({ work, large }: { work: Work; large?: boolean 
 
       {open && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10 bg-black/80 backdrop-blur-sm"
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10 bg-black/80"
           onClick={() => setOpen(false)}
         >
           <div
@@ -110,7 +155,7 @@ export default function WorkCard({ work, large }: { work: Work; large?: boolean 
 
             <div className="relative aspect-[16/9] w-full bg-black">
               <iframe
-                src={`https://player.vimeo.com/video/${work.vimeoId}?autoplay=1&loop=1&muted=1&controls=0&background=0&dnt=1&title=0&byline=0&portrait=0`}
+                src={`https://player.vimeo.com/video/${work.vimeoId}?autoplay=1&loop=1&muted=1&playsinline=1&controls=0&background=0&dnt=1&title=0&byline=0&portrait=0`}
                 allow="autoplay; fullscreen; picture-in-picture"
                 allowFullScreen
                 className="absolute inset-0 w-full h-full"
