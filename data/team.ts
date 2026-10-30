@@ -10,6 +10,13 @@ export type Member = {
 
 export const TEAM: Member[] = [
   {
+    name: "Noé Delaye",
+    roles: ["CEO"],
+    instagram: "@noe.dly",
+    linkedin: "https://www.linkedin.com/in/no%C3%A9-delaye-su%C3%B1er-043229231/",
+    reel: "",
+  },
+  {
     name: "Júlia Bosch",
     roles: ["CREATIVE AND ART DIRECTOR"],
     refs: "Coca-Cola: Be Who You Are, League of Legends: Paranoia, Samsung Galaxy S25 Ultra, Pepsi - Where There’s A Ball There’s A Way",
@@ -18,16 +25,8 @@ export const TEAM: Member[] = [
     reel: "",
   },
   {
-    name: "Noé Delaye",
-    roles: ["CEO", "3D GENERALIST"],
-    refs: "Pepsi Football Nation, CUPRA Tindaya Showcar, Subway Surfers City trailer, Modelo 77, SHISHEIDO Elixir",
-    instagram: "@noe.dly",
-    linkedin: "https://www.linkedin.com/in/no%C3%A9-delaye-su%C3%B1er-043229231/",
-    reel: "",
-  },
-  {
     name: "Roger Piñol",
-    roles: ["CG SUPERVISOR", "3D GENERALIST"],
+    roles: ["CTO", "CG/3D SUPERVISOR"],
     refs: "Magic: The Gathering, League of Legends: Paranoia, Subway Surfers City, Google Android XR: CES 2026, Netflix Bird Box Barcelona, Society of the Snow.",
     instagram: "@rogerpinol_",
     linkedin: "https://www.linkedin.com/in/rogerpinol",
@@ -36,7 +35,7 @@ export const TEAM: Member[] = [
   },
   {
     name: "Carlos Yau",
-    roles: ["VFX SUPERVISOR", "COMPOSITOR",  "HEAD OF VIRTUAL PROD"],
+    roles: ["VFX SUPERVISOR", "HEAD OF VIRTUAL PROD"],
     refs: "Powerade FIFA World Cup, Oppo Reno 5 Commercial, Labyrinth - Kill For Your Love, Riders Republic _ win More Than Gold , Control Room",
     instagram: "@cyau49",
     linkedin: "https://www.linkedin.com/in/carlosyau/",
