@@ -4,7 +4,7 @@ import Player from "@vimeo/player";
 import { Work } from "@/data/works";
 import { useLang } from "@/contexts/LanguageContext";
 
-/** Desktop with fine pointer — safe to autoplay hover-style previews. */
+/** Desktop with fine pointer — load all previews (mobile stays thumbs-only to avoid iOS crash). */
 function useDesktopPreview() {
   const [enabled, setEnabled] = useState(false);
   useEffect(() => {
@@ -20,14 +20,14 @@ function useDesktopPreview() {
 export default function WorkCard({ work, large }: { work: Work; large?: boolean }) {
   const { t } = useLang();
   const desktopPreview = useDesktopPreview();
-  const cardRef = useRef<HTMLButtonElement | null>(null);
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
-  const [inView, setInView] = useState(false);
   const [thumb, setThumb] = useState<string | null>(null);
   const [ready, setReady] = useState(false);
   const [open, setOpen] = useState(false);
+  // Wait for splash, then mount all desktop previews and keep them (no unload on scroll).
+  const [allowPreviews, setAllowPreviews] = useState(false);
 
-  const showPreview = desktopPreview && inView;
+  const showPreview = desktopPreview && allowPreviews;
 
   useEffect(() => {
     fetch(`/api/vimeo/thumbnail?id=${work.vimeoId}`)
@@ -36,24 +36,23 @@ export default function WorkCard({ work, large }: { work: Work; large?: boolean 
       .catch(() => null);
   }, [work.vimeoId]);
 
-  // Only observe for desktop preview mounts
   useEffect(() => {
-    if (!desktopPreview || !cardRef.current) return;
-    const el = cardRef.current;
-    const obs = new IntersectionObserver(
-      ([entry]) => setInView(entry.isIntersecting),
-      { rootMargin: "200px 0px", threshold: 0.01 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
+    if (!desktopPreview) return;
+
+    function enable() {
+      setAllowPreviews(true);
+    }
+
+    window.addEventListener("nata:splash-done", enable);
+    const safety = setTimeout(enable, 7000);
+    return () => {
+      window.removeEventListener("nata:splash-done", enable);
+      clearTimeout(safety);
+    };
   }, [desktopPreview]);
 
   useEffect(() => {
-    if (!showPreview) {
-      setReady(false);
-      return;
-    }
-    if (!iframeRef.current) return;
+    if (!showPreview || !iframeRef.current) return;
 
     const player = new Player(iframeRef.current);
     let grace: ReturnType<typeof setTimeout>;
@@ -79,13 +78,11 @@ export default function WorkCard({ work, large }: { work: Work; large?: boolean 
   return (
     <>
       <button
-        ref={cardRef}
         onClick={() => setOpen(true)}
         className={`relative w-full overflow-hidden bg-black group cursor-pointer ${
           large ? "aspect-[16/10] md:aspect-[16/7]" : "aspect-[16/10]"
         }`}
       >
-        {/* Preview video: desktop + in-viewport only — avoids iOS memory crash */}
         {showPreview && (
           <iframe
             ref={iframeRef}
@@ -97,25 +94,23 @@ export default function WorkCard({ work, large }: { work: Work; large?: boolean 
           />
         )}
 
-        {(thumb || !showPreview) && (
-          <div
-            className={`absolute inset-0 transition-opacity duration-700 ${
-              showPreview && ready ? "opacity-0 pointer-events-none" : "opacity-100"
-            }`}
-          >
-            {thumb ? (
-              <img
-                src={thumb}
-                alt={work.title}
-                className="w-full h-full object-cover"
-                loading="lazy"
-                decoding="async"
-              />
-            ) : (
-              <div className="w-full h-full bg-neutral-900" />
-            )}
-          </div>
-        )}
+        <div
+          className={`absolute inset-0 transition-opacity duration-700 ${
+            showPreview && ready ? "opacity-0 pointer-events-none" : "opacity-100"
+          }`}
+        >
+          {thumb ? (
+            <img
+              src={thumb}
+              alt={work.title}
+              className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+          ) : (
+            <div className="w-full h-full bg-neutral-900" />
+          )}
+        </div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
         <div className="absolute bottom-0 left-0 p-5 md:p-7">
           {work.category && (

@@ -53,8 +53,9 @@ export default function IntroSplash() {
   useEffect(() => {
     if (!show) return;
 
+    // Hold at least for the counter; wait longer for the hero video when needed.
     const MIN_MS = 2500;
-    const MAX_MS = 4000;
+    const MAX_MS = 7000;
     const start = Date.now();
     let dismissed = false;
     let fadeTimer: ReturnType<typeof setTimeout> | undefined;
